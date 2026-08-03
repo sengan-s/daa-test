@@ -234,7 +234,7 @@ export const AssessmentPage: React.FC<AssessmentPageProps> = ({
   const solvedCount = Object.values(session.problemStatuses).filter((s) => s === 'solved').length;
 
   return (
-    <div className="min-h-[calc(100vh-65px)] flex flex-col bg-slate-950 text-slate-100 selection:bg-indigo-500 selection:text-white select-none">
+    <div className="min-h-[calc(100vh-65px)] flex flex-col bg-[#0A0E2A] text-slate-100 selection:bg-[#F72585] selection:text-white select-none">
       <WarningModal
         isOpen={showWarningModal}
         violationCount={session.violations}
@@ -242,17 +242,17 @@ export const AssessmentPage: React.FC<AssessmentPageProps> = ({
       />
 
       {/* Top Banner / Progress Summary */}
-      <div className="bg-slate-900 border-b border-slate-800 px-4 py-2.5 flex flex-wrap items-center justify-between gap-3 text-xs">
+      <div className="bg-[#0D1335]/90 border-b border-[#7B61FF]/30 px-4 py-2.5 flex flex-wrap items-center justify-between gap-3 text-xs backdrop-blur-md">
         <div className="flex items-center space-x-4">
           <span className="font-semibold text-slate-300">Assessment Progress:</span>
           <div className="flex items-center space-x-2">
-            <div className="w-32 bg-slate-800 h-2 rounded-full overflow-hidden border border-slate-700">
+            <div className="w-32 bg-[#070A1E] h-2 rounded-full overflow-hidden border border-[#7B61FF]/30">
               <div
-                className="bg-gradient-to-r from-indigo-500 to-emerald-400 h-full transition-all duration-500"
+                className="bg-gradient-to-r from-[#F72585] via-[#7B61FF] to-[#4CC9F0] h-full transition-all duration-500 shadow-[0_0_10px_rgba(247,37,133,0.5)]"
                 style={{ width: `${(solvedCount / 3) * 100}%` }}
               />
             </div>
-            <span className="font-mono font-bold text-emerald-400">{solvedCount}/3 Solved</span>
+            <span className="font-mono font-bold text-[#4CC9F0]">{solvedCount}/3 Solved</span>
           </div>
         </div>
 
@@ -270,7 +270,7 @@ export const AssessmentPage: React.FC<AssessmentPageProps> = ({
               onFinalSubmit(session).finally(() => setIsSubmittingFinal(false));
             }}
             disabled={isSubmittingFinal}
-            className="flex items-center space-x-2 bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-500 hover:from-emerald-500 hover:to-teal-500 text-white font-bold py-2 px-4 rounded-xl shadow-lg shadow-emerald-500/20 transition-all cursor-pointer disabled:opacity-50"
+            className="flex items-center space-x-2 bg-gradient-to-r from-[#F72585] to-[#7B61FF] hover:from-[#d91970] hover:to-[#674ce6] text-white font-bold py-2 px-4 rounded-xl shadow-lg shadow-[#F72585]/25 transition-all cursor-pointer disabled:opacity-50 border border-[#F72585]/40"
           >
             <Send className="h-4 w-4" />
             <span>{isSubmittingFinal ? 'Submitting...' : 'Finish Assessment'}</span>
@@ -281,10 +281,10 @@ export const AssessmentPage: React.FC<AssessmentPageProps> = ({
       {/* Main Grid Layout */}
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-12 gap-0 overflow-hidden">
         {/* Left Sidebar: Problem Navigation */}
-        <div className="lg:col-span-3 bg-slate-900/90 border-r border-slate-800 p-4 space-y-4">
-          <div className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center justify-between">
+        <div className="lg:col-span-3 bg-[#0D1335]/80 border-r border-[#7B61FF]/25 p-4 space-y-4 backdrop-blur-md">
+          <div className="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center justify-between">
             <span>Problems</span>
-            <span className="text-[10px] text-indigo-400">Total: 50 Marks</span>
+            <span className="text-[10px] text-[#F72585] font-semibold">Total: 50 Marks</span>
           </div>
 
           <div className="space-y-2">
@@ -296,10 +296,10 @@ export const AssessmentPage: React.FC<AssessmentPageProps> = ({
                 <button
                   key={prob.id}
                   onClick={() => handleSwitchProblem(prob.id)}
-                  className={`w-full text-left p-3 rounded-xl border transition-all flex items-center justify-between group ${
+                  className={`w-full text-left p-3 rounded-xl border transition-all flex items-center justify-between group cursor-pointer ${
                     isActive
-                      ? 'bg-indigo-600/20 border-indigo-500 text-white shadow-md'
-                      : 'bg-slate-950/60 border-slate-800 text-slate-300 hover:bg-slate-800 hover:border-slate-700'
+                      ? 'bg-[#F72585]/20 border-[#F72585] text-white shadow-[0_0_20px_rgba(247,37,133,0.25)]'
+                      : 'bg-[#070A1E]/60 border-[#7B61FF]/20 text-slate-300 hover:bg-[#121842] hover:border-[#7B61FF]/40'
                   }`}
                 >
                   <div className="space-y-0.5">
@@ -307,7 +307,7 @@ export const AssessmentPage: React.FC<AssessmentPageProps> = ({
                       {prob.title}
                     </div>
                     <div className="text-[11px] text-slate-400">
-                      Marks: <span className="text-indigo-300 font-mono">{prob.marks}</span>
+                      Marks: <span className="text-[#4CC9F0] font-mono">{prob.marks}</span>
                     </div>
                   </div>
 
@@ -366,10 +366,10 @@ export const AssessmentPage: React.FC<AssessmentPageProps> = ({
         </div>
 
         {/* Center: Problem Statement */}
-        <div className="lg:col-span-4 bg-slate-900/60 p-4 border-r border-slate-800 overflow-y-auto max-h-[calc(100vh-130px)] space-y-4">
-          <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-            <h2 className="text-lg font-bold text-white">{activeProblem.title}</h2>
-            <span className="px-2.5 py-1 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/30 font-mono text-xs font-bold">
+        <div className="lg:col-span-4 bg-[#0D1335]/60 p-4 border-r border-[#7B61FF]/25 overflow-y-auto max-h-[calc(100vh-130px)] space-y-4 backdrop-blur-sm">
+          <div className="flex items-center justify-between border-b border-[#7B61FF]/25 pb-3">
+            <h2 className="text-lg font-bold text-white tracking-tight">{activeProblem.title}</h2>
+            <span className="px-2.5 py-1 rounded-full bg-[#F72585]/15 text-[#F72585] border border-[#F72585]/30 font-mono text-xs font-bold">
               {activeProblem.marks} Marks
             </span>
           </div>
@@ -380,23 +380,23 @@ export const AssessmentPage: React.FC<AssessmentPageProps> = ({
           </div>
 
           {/* Input/Output Format */}
-          <div className="space-y-2 bg-slate-950 p-3 rounded-xl border border-slate-800 text-xs">
+          <div className="space-y-2 bg-[#070A1E] p-3 rounded-xl border border-[#7B61FF]/30 text-xs">
             <div className="font-semibold text-slate-200 flex items-center space-x-1.5">
-              <FileText className="h-3.5 w-3.5 text-indigo-400" />
+              <FileText className="h-3.5 w-3.5 text-[#F72585]" />
               <span>Input / Output Spec</span>
             </div>
             <div>
               <span className="text-slate-400">Input: </span>
-              <code className="text-indigo-300 font-mono bg-slate-900 px-1.5 py-0.5 rounded">{activeProblem.inputFormat}</code>
+              <code className="text-[#4CC9F0] font-mono bg-[#0D1335] px-1.5 py-0.5 rounded">{activeProblem.inputFormat}</code>
             </div>
             <div>
               <span className="text-slate-400">Expected Output: </span>
-              <code className="text-emerald-300 font-mono bg-slate-900 px-1.5 py-0.5 rounded">{activeProblem.outputFormat}</code>
+              <code className="text-emerald-400 font-mono bg-[#0D1335] px-1.5 py-0.5 rounded">{activeProblem.outputFormat}</code>
             </div>
           </div>
 
           {/* Constraints */}
-          <div className="space-y-1.5 bg-slate-950/80 p-3 rounded-xl border border-slate-800 text-xs">
+          <div className="space-y-1.5 bg-[#070A1E]/80 p-3 rounded-xl border border-[#7B61FF]/25 text-xs">
             <div className="font-semibold text-slate-200">Constraints:</div>
             <ul className="list-disc list-inside space-y-1 text-slate-400 font-mono text-[11px]">
               {activeProblem.constraints.map((c, i) => (
@@ -409,8 +409,8 @@ export const AssessmentPage: React.FC<AssessmentPageProps> = ({
           <div className="space-y-2">
             <div className="font-semibold text-xs text-slate-300">Visible Sample Test Cases:</div>
             {activeProblem.visibleTestCases.map((tc, idx) => (
-              <div key={tc.id} className="bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs space-y-1">
-                <div className="font-mono text-[11px] text-indigo-400 font-semibold">Sample Case #{idx + 1}</div>
+              <div key={tc.id} className="bg-[#070A1E] border border-[#7B61FF]/25 rounded-xl p-3 text-xs space-y-1">
+                <div className="font-mono text-[11px] text-[#F72585] font-semibold">Sample Case #{idx + 1}</div>
                 <div className="font-mono text-slate-300"><span className="text-slate-500">Input:</span> {tc.input}</div>
                 <div className="font-mono text-emerald-400"><span className="text-slate-500">Output:</span> {tc.expectedOutput}</div>
                 {tc.explanation && (
@@ -422,22 +422,22 @@ export const AssessmentPage: React.FC<AssessmentPageProps> = ({
         </div>
 
         {/* Right: Monaco Editor & Judge Output */}
-        <div className="lg:col-span-5 flex flex-col bg-slate-950 overflow-hidden">
+        <div className="lg:col-span-5 flex flex-col bg-[#070A1E] overflow-hidden">
           {/* Editor Header Bar */}
-          <div className="bg-slate-900 px-4 py-2 border-b border-slate-800 flex flex-wrap items-center justify-between gap-2">
+          <div className="bg-[#0D1335] px-4 py-2 border-b border-[#7B61FF]/25 flex flex-wrap items-center justify-between gap-2">
             <div className="flex items-center space-x-2">
-              <Code2 className="h-4 w-4 text-indigo-400" />
-              <div className="flex items-center space-x-1.5 bg-slate-950 border border-slate-800 rounded-lg px-2 py-1">
+              <Code2 className="h-4 w-4 text-[#F72585]" />
+              <div className="flex items-center space-x-1.5 bg-[#070A1E] border border-[#7B61FF]/30 rounded-lg px-2 py-1">
                 <span className="text-[11px] text-slate-400 font-semibold">Language:</span>
                 <select
                   value={activeLanguage}
                   onChange={(e) => handleLanguageChange(e.target.value as Language)}
-                  className="bg-transparent text-xs font-bold font-mono text-indigo-300 focus:outline-none cursor-pointer"
+                  className="bg-transparent text-xs font-bold font-mono text-[#4CC9F0] focus:outline-none cursor-pointer"
                 >
-                  <option value="python" className="bg-slate-900 text-slate-100">Python (Python 3)</option>
-                  <option value="java" className="bg-slate-900 text-slate-100">Java (OpenJDK 17)</option>
-                  <option value="c" className="bg-slate-900 text-slate-100">C (GCC 11)</option>
-                  <option value="cpp" className="bg-slate-900 text-slate-100">C++ (G++ 11)</option>
+                  <option value="python" className="bg-[#0D1335] text-slate-100">Python (Python 3)</option>
+                  <option value="java" className="bg-[#0D1335] text-slate-100">Java (OpenJDK 17)</option>
+                  <option value="c" className="bg-[#0D1335] text-slate-100">C (GCC 11)</option>
+                  <option value="cpp" className="bg-[#0D1335] text-slate-100">C++ (G++ 11)</option>
                 </select>
               </div>
             </div>
@@ -447,9 +447,9 @@ export const AssessmentPage: React.FC<AssessmentPageProps> = ({
               <button
                 onClick={handleRunCode}
                 disabled={isEvaluating}
-                className="flex items-center space-x-1.5 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-semibold text-xs py-1.5 px-3 rounded-lg transition-colors cursor-pointer disabled:opacity-50"
+                className="flex items-center space-x-1.5 bg-[#0D1335] hover:bg-[#181F54] border border-[#7B61FF]/40 text-slate-200 font-semibold text-xs py-1.5 px-3 rounded-lg transition-colors cursor-pointer disabled:opacity-50"
               >
-                <Play className="h-3.5 w-3.5 text-indigo-400 fill-current" />
+                <Play className="h-3.5 w-3.5 text-[#F72585] fill-current" />
                 <span>Run (Samples)</span>
               </button>
 
@@ -457,7 +457,7 @@ export const AssessmentPage: React.FC<AssessmentPageProps> = ({
               <button
                 onClick={handleSubmitProblem}
                 disabled={isEvaluating}
-                className="flex items-center space-x-1.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs py-1.5 px-3 rounded-lg shadow-md shadow-indigo-600/20 transition-all cursor-pointer disabled:opacity-50"
+                className="flex items-center space-x-1.5 bg-gradient-to-r from-[#F72585] to-[#7B61FF] hover:from-[#d91970] hover:to-[#674ce6] text-white font-semibold text-xs py-1.5 px-3 rounded-lg shadow-md shadow-[#F72585]/20 border border-[#F72585]/40 transition-all cursor-pointer disabled:opacity-50"
               >
                 <Send className="h-3.5 w-3.5" />
                 <span>Submit Code</span>

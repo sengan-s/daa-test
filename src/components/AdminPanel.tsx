@@ -216,23 +216,23 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ onClose }) => {
   // If not logged in: Password Modal
   if (!token) {
     return (
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/90 backdrop-blur-md">
-        <div className="relative w-full max-w-md bg-slate-900 border border-slate-800 rounded-3xl p-6 lg:p-8 shadow-2xl space-y-6">
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0A0E2A]/90 backdrop-blur-md">
+        <div className="relative w-full max-w-md bg-[#0D1335]/90 border border-[#7B61FF]/30 rounded-3xl p-6 lg:p-8 shadow-[0_0_35px_rgba(247,37,133,0.15)] space-y-6">
           {onClose && (
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 text-slate-400 hover:text-white p-1 rounded-lg bg-slate-800"
+              className="absolute top-4 right-4 text-slate-400 hover:text-white p-1.5 rounded-xl bg-slate-800/80 border border-slate-700/60 transition-colors"
             >
               <X className="h-4 w-4" />
             </button>
           )}
 
           <div className="text-center space-y-2">
-            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-indigo-600/20 text-indigo-400 border border-indigo-500/30">
+            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-[#F72585]/20 text-[#F72585] border border-[#F72585]/40 shadow-lg shadow-[#F72585]/20">
               <Lock className="h-7 w-7" />
             </div>
-            <h2 className="text-xl font-bold text-white">DAA Admin Portal</h2>
-            <p className="text-xs text-slate-400">Enter security passkey to access assessment results</p>
+            <h2 className="text-xl font-bold text-white tracking-tight">DAA Admin Portal</h2>
+            <p className="text-xs text-slate-300">Enter security passkey to access assessment results</p>
           </div>
 
           <form onSubmit={handleLogin} className="space-y-4">
@@ -244,12 +244,9 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ onClose }) => {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter passkey (e.g., 250806 or admin)"
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                placeholder="Enter passkey"
+                className="w-full bg-[#070A1E] border border-[#7B61FF]/30 rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#F72585] transition-all"
               />
-              <p className="text-[11px] text-slate-400 mt-1 flex items-center justify-between">
-                <span>Passkey: <code className="text-indigo-300 font-mono font-bold bg-slate-800 px-1.5 py-0.5 rounded">250806</code> or <code className="text-indigo-300 font-mono font-bold bg-slate-800 px-1.5 py-0.5 rounded">admin</code></span>
-              </p>
             </div>
 
             {loginError && (
@@ -261,7 +258,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ onClose }) => {
             <button
               type="submit"
               disabled={isLoading || !password}
-              className="w-full py-3 px-4 rounded-xl font-bold text-sm bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white shadow-lg shadow-indigo-500/25 transition-all cursor-pointer disabled:opacity-50"
+              className="w-full py-3 px-4 rounded-xl font-bold text-sm bg-gradient-to-r from-[#F72585] to-[#7B61FF] hover:from-[#e01e74] hover:to-[#684be3] text-white shadow-lg shadow-[#F72585]/25 transition-all cursor-pointer disabled:opacity-50 border border-[#F72585]/40"
             >
               {isLoading ? 'Authenticating...' : 'Access Dashboard'}
             </button>
@@ -273,16 +270,16 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ onClose }) => {
 
   // Dashboard View
   return (
-    <div className="min-h-[calc(100vh-65px)] bg-slate-950 text-slate-100 p-4 lg:p-8 space-y-6">
+    <div className="min-h-[calc(100vh-65px)] bg-gradient-to-br from-[#0A0E2A] via-[#0E1338] to-[#1A1F4B] text-slate-100 p-4 lg:p-8 space-y-6">
       {/* Header Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-4 bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-lg">
+      <div className="flex flex-wrap items-center justify-between gap-4 bg-[#0D1335]/80 border border-[#7B61FF]/30 rounded-2xl p-5 shadow-[0_0_20px_rgba(247,37,133,0.1)] backdrop-blur-md">
         <div className="flex items-center space-x-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-600/20 text-indigo-400 border border-indigo-500/30">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#F72585]/20 text-[#F72585] border border-[#F72585]/30">
             <Terminal className="h-5 w-5" />
           </div>
           <div>
-            <h1 className="text-xl font-bold text-white">DAA Assessment Admin Portal</h1>
-            <p className="text-xs text-slate-400">Candidate Submission Records & Automated Judge Evaluation</p>
+            <h1 className="text-xl font-bold text-white tracking-tight">DAA Assessment Admin Portal</h1>
+            <p className="text-xs text-slate-300">Candidate Submission Records & Automated Judge Evaluation</p>
           </div>
         </div>
 

@@ -32,11 +32,11 @@ export const Navbar: React.FC<NavbarProps> = ({
   const progressPercent = Math.min(100, Math.max(0, (timeRemainingSeconds / 3600) * 100));
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-slate-800 bg-slate-900/90 backdrop-blur-md px-4 lg:px-8 py-3 transition-colors duration-200">
+    <header className="sticky top-0 z-40 w-full border-b border-[#7B61FF]/25 bg-[#0A0E2A]/85 backdrop-blur-md px-4 lg:px-8 py-3 transition-colors duration-200">
       <div className="mx-auto flex max-w-7xl items-center justify-between">
         {/* Left: Branding Logo */}
         <div className="flex items-center space-x-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-500 shadow-lg shadow-indigo-500/25 ring-1 ring-white/20">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-[#F72585] via-[#7B61FF] to-[#4CC9F0] shadow-lg shadow-[#F72585]/30 ring-1 ring-white/20">
             <Code2 className="h-5 w-5 text-white" />
           </div>
           <div>
@@ -44,11 +44,11 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span className="font-space font-bold tracking-tight text-white text-lg lg:text-xl">
                 DAA Assessment
               </span>
-              <span className="rounded-full bg-indigo-500/10 px-2.5 py-0.5 text-xs font-semibold text-indigo-400 ring-1 ring-indigo-500/30">
+              <span className="rounded-full bg-[#F72585]/15 px-2.5 py-0.5 text-xs font-semibold text-[#F72585] ring-1 ring-[#F72585]/30">
                 Java Judge
               </span>
             </div>
-            <p className="text-xs text-slate-400 font-medium hidden sm:block">
+            <p className="text-xs text-slate-300 font-medium hidden sm:block">
               Design & Analysis of Algorithms Examination
             </p>
           </div>
@@ -56,7 +56,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
         {/* Center: Live Timer if Assessment is Active */}
         {isAssessmentActive && (
-          <div className="flex items-center space-x-3 bg-slate-800/80 px-4 py-1.5 rounded-full border border-slate-700/80 shadow-inner">
+          <div className="flex items-center space-x-3 bg-[#0D1335]/90 px-4 py-1.5 rounded-full border border-[#7B61FF]/30 shadow-[0_0_15px_rgba(247,37,133,0.15)]">
             <div className="relative flex h-8 w-8 items-center justify-center">
               {/* Circular Progress Ring */}
               <svg className="h-8 w-8 -rotate-90 transform">
@@ -64,7 +64,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   cx="16"
                   cy="16"
                   r="13"
-                  className="stroke-slate-700"
+                  className="stroke-slate-800"
                   strokeWidth="3"
                   fill="transparent"
                 />
@@ -73,7 +73,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   cy="16"
                   r="13"
                   className={`transition-all duration-300 ${
-                    isLowTime ? 'stroke-red-500 animate-pulse' : 'stroke-indigo-500'
+                    isLowTime ? 'stroke-red-500 animate-pulse' : 'stroke-[#F72585]'
                   }`}
                   strokeWidth="3"
                   strokeDasharray={81.68}
@@ -82,7 +82,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   fill="transparent"
                 />
               </svg>
-              <Clock className={`absolute h-4 w-4 ${isLowTime ? 'text-red-400 animate-bounce' : 'text-indigo-400'}`} />
+              <Clock className={`absolute h-4 w-4 ${isLowTime ? 'text-red-400 animate-bounce' : 'text-[#F72585]'}`} />
             </div>
 
             <div className="flex flex-col">
@@ -103,10 +103,10 @@ export const Navbar: React.FC<NavbarProps> = ({
         {/* Right: Candidate Info, Violations & Controls */}
         <div className="flex items-center space-x-3">
           {rollNo && (
-            <div className="hidden md:flex items-center space-x-3 bg-slate-800/60 px-3 py-1.5 rounded-lg border border-slate-700">
+            <div className="hidden md:flex items-center space-x-3 bg-[#0D1335]/80 px-3 py-1.5 rounded-xl border border-[#7B61FF]/30">
               <div className="text-right">
-                <div className="text-xs font-semibold text-slate-200">{name}</div>
-                <div className="text-[11px] font-mono text-indigo-400">{rollNo}</div>
+                <div className="text-xs font-semibold text-slate-100">{name}</div>
+                <div className="text-[11px] font-mono text-[#4CC9F0]">{rollNo}</div>
               </div>
 
               {/* Violation Indicator */}
@@ -131,19 +131,19 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Theme Toggle Button */}
           <button
             onClick={onToggleDarkMode}
-            className="p-2 text-slate-400 hover:text-white bg-slate-800 hover:bg-slate-700 rounded-lg border border-slate-700 transition-colors"
+            className="p-2 text-slate-300 hover:text-white bg-[#0D1335] hover:bg-slate-800 rounded-xl border border-[#7B61FF]/30 transition-colors"
             title="Toggle Theme"
           >
-            {isDarkMode ? <Sun className="h-4 w-4 text-amber-400" /> : <Moon className="h-4 w-4 text-indigo-400" />}
+            {isDarkMode ? <Sun className="h-4 w-4 text-amber-400" /> : <Moon className="h-4 w-4 text-[#7B61FF]" />}
           </button>
 
           {/* Admin Portal Button */}
           {onOpenAdminLogin && (
             <button
               onClick={onOpenAdminLogin}
-              className="flex items-center space-x-1.5 px-3 py-1.5 text-xs font-semibold text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 rounded-lg border border-slate-700 transition-colors"
+              className="flex items-center space-x-1.5 px-3 py-1.5 text-xs font-semibold text-slate-200 hover:text-white bg-[#0D1335] hover:bg-[#161C48] rounded-xl border border-[#7B61FF]/30 transition-all cursor-pointer shadow-sm hover:border-[#F72585]/50"
             >
-              <Terminal className="h-3.5 w-3.5 text-indigo-400" />
+              <Terminal className="h-3.5 w-3.5 text-[#F72585]" />
               <span>Admin Portal</span>
             </button>
           )}

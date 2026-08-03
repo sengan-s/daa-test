@@ -209,7 +209,7 @@ export default function App() {
   };
 
   return (
-    <div className={`min-h-screen ${isDarkMode ? 'dark bg-slate-950 text-slate-100' : 'bg-slate-100 text-slate-900'} transition-colors duration-200 font-sans`}>
+    <div className={`min-h-screen ${isDarkMode ? 'dark bg-gradient-to-br from-[#0A0E2A] via-[#0D1335] to-[#1A1F4B] text-slate-100' : 'bg-slate-100 text-slate-900'} transition-colors duration-200 font-sans selection:bg-[#F72585] selection:text-white`}>
       <Navbar
         timeRemainingSeconds={timeRemainingSeconds}
         rollNo={session?.rollNo}

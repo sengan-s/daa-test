@@ -53,14 +53,14 @@ export const ResultsPage: React.FC<ResultsPageProps> = ({ submission, onExit }) 
   const isCleanRecord = submission.violations === 0;
 
   return (
-    <div className="min-h-[calc(100vh-65px)] flex items-center justify-center p-4 lg:p-8 bg-slate-950 text-slate-100">
-      <div className="w-full max-w-3xl bg-slate-900 border border-slate-800 rounded-3xl p-6 lg:p-10 shadow-2xl space-y-8 relative overflow-hidden">
+    <div className="min-h-[calc(100vh-65px)] flex items-center justify-center p-4 lg:p-8 bg-[#0A0E2A] text-slate-100">
+      <div className="w-full max-w-3xl bg-[#0D1335]/90 border border-[#7B61FF]/30 rounded-3xl p-6 lg:p-10 shadow-[0_0_50px_rgba(247,37,133,0.15)] space-y-8 relative overflow-hidden backdrop-blur-xl">
         {/* Decorative Top Gradient Line */}
-        <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-emerald-500 via-indigo-500 to-purple-500" />
+        <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#F72585] via-[#7B61FF] to-[#4CC9F0]" />
 
         {/* Header Badge */}
         <div className="text-center space-y-3">
-          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 ring-8 ring-emerald-500/10 shadow-lg">
+          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-[#F72585]/20 text-[#F72585] border border-[#F72585]/40 ring-8 ring-[#F72585]/10 shadow-lg shadow-[#F72585]/20">
             <CheckCircle2 className="h-8 w-8" />
           </div>
 
@@ -68,38 +68,38 @@ export const ResultsPage: React.FC<ResultsPageProps> = ({ submission, onExit }) 
             <h1 className="text-2xl lg:text-3xl font-extrabold text-white tracking-tight">
               Assessment Submitted Successfully
             </h1>
-            <p className="text-sm text-slate-400">
+            <p className="text-sm text-slate-300">
               Your Java code has been evaluated and permanently recorded in the DAA portal.
             </p>
           </div>
         </div>
 
         {/* Big Score Reveal Box */}
-        <div className="bg-slate-950 border border-slate-800 rounded-2xl p-6 text-center relative overflow-hidden shadow-inner">
+        <div className="bg-[#070A1E] border border-[#7B61FF]/30 rounded-2xl p-6 text-center relative overflow-hidden shadow-inner">
           <div className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">
             Final Examination Score
           </div>
           <div className="flex items-baseline justify-center space-x-2">
-            <span className="font-mono text-5xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-indigo-400">
+            <span className="font-mono text-5xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#F72585] via-[#7B61FF] to-[#4CC9F0] drop-shadow-[0_0_15px_rgba(247,37,133,0.4)]">
               {animatedScore}
             </span>
             <span className="text-slate-500 text-xl font-bold font-mono">/ 50</span>
           </div>
-          <p className="text-xs text-indigo-400 mt-2 font-semibold">
+          <p className="text-xs text-[#4CC9F0] mt-2 font-semibold">
             Candidate: {submission.name} ({submission.rollNo})
           </p>
         </div>
 
         {/* Per-Problem Marks Breakdown */}
         <div className="space-y-3">
-          <div className="flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-slate-400">
-            <BarChart3 className="h-4 w-4 text-indigo-400" />
+          <div className="flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-slate-300">
+            <BarChart3 className="h-4 w-4 text-[#F72585]" />
             <span>Problem Marks Breakdown</span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
             {/* Merge Sorted Array */}
-            <div className="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-1">
+            <div className="bg-[#070A1E] p-4 rounded-2xl border border-[#7B61FF]/30 space-y-1">
               <div className="text-xs text-slate-400 font-medium">1. Merge Sorted Array</div>
               <div className="flex items-baseline justify-between">
                 <span className="font-mono text-xl font-bold text-white">
@@ -108,10 +108,10 @@ export const ResultsPage: React.FC<ResultsPageProps> = ({ submission, onExit }) 
                 <span
                   className={`text-[10px] font-bold px-2 py-0.5 rounded ${
                     submission.mergeSortMarks === 15
-                      ? 'bg-emerald-500/20 text-emerald-400'
+                      ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
                       : submission.mergeSortMarks > 0
-                      ? 'bg-amber-500/20 text-amber-300'
-                      : 'bg-red-500/20 text-red-400'
+                      ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30'
+                      : 'bg-rose-500/20 text-rose-300 border border-rose-500/30'
                   }`}
                 >
                   {submission.mergeSortMarks === 15 ? 'Full Marks' : `${submission.mergeSortMarks} pts`}
@@ -120,7 +120,7 @@ export const ResultsPage: React.FC<ResultsPageProps> = ({ submission, onExit }) 
             </div>
 
             {/* Binary Search */}
-            <div className="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-1">
+            <div className="bg-[#070A1E] p-4 rounded-2xl border border-[#7B61FF]/30 space-y-1">
               <div className="text-xs text-slate-400 font-medium">2. Binary Search</div>
               <div className="flex items-baseline justify-between">
                 <span className="font-mono text-xl font-bold text-white">
@@ -129,10 +129,10 @@ export const ResultsPage: React.FC<ResultsPageProps> = ({ submission, onExit }) 
                 <span
                   className={`text-[10px] font-bold px-2 py-0.5 rounded ${
                     submission.binarySearchMarks === 15
-                      ? 'bg-emerald-500/20 text-emerald-400'
+                      ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
                       : submission.binarySearchMarks > 0
-                      ? 'bg-amber-500/20 text-amber-300'
-                      : 'bg-red-500/20 text-red-400'
+                      ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30'
+                      : 'bg-rose-500/20 text-rose-300 border border-rose-500/30'
                   }`}
                 >
                   {submission.binarySearchMarks === 15 ? 'Full Marks' : `${submission.binarySearchMarks} pts`}
@@ -141,7 +141,7 @@ export const ResultsPage: React.FC<ResultsPageProps> = ({ submission, onExit }) 
             </div>
 
             {/* Matrix Multiplication */}
-            <div className="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-1">
+            <div className="bg-[#070A1E] p-4 rounded-2xl border border-[#7B61FF]/30 space-y-1">
               <div className="text-xs text-slate-400 font-medium">3. Matrix Multiplication</div>
               <div className="flex items-baseline justify-between">
                 <span className="font-mono text-xl font-bold text-white">
@@ -150,10 +150,10 @@ export const ResultsPage: React.FC<ResultsPageProps> = ({ submission, onExit }) 
                 <span
                   className={`text-[10px] font-bold px-2 py-0.5 rounded ${
                     submission.matrixMultMarks === 20
-                      ? 'bg-emerald-500/20 text-emerald-400'
+                      ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
                       : submission.matrixMultMarks > 0
-                      ? 'bg-amber-500/20 text-amber-300'
-                      : 'bg-red-500/20 text-red-400'
+                      ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30'
+                      : 'bg-rose-500/20 text-rose-300 border border-rose-500/30'
                   }`}
                 >
                   {submission.matrixMultMarks === 20 ? 'Full Marks' : `${submission.matrixMultMarks} pts`}
@@ -177,8 +177,8 @@ export const ResultsPage: React.FC<ResultsPageProps> = ({ submission, onExit }) 
             )}
 
             {isSpeedSolver && (
-              <div className="flex items-center space-x-1.5 bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 px-3 py-1.5 rounded-xl text-xs font-bold">
-                <Zap className="h-4 w-4 text-indigo-400" />
+              <div className="flex items-center space-x-1.5 bg-[#7B61FF]/20 border border-[#7B61FF]/40 text-[#4CC9F0] px-3 py-1.5 rounded-xl text-xs font-bold">
+                <Zap className="h-4 w-4 text-[#F72585]" />
                 <span>⚡ Speed Solver</span>
               </div>
             )}
@@ -191,8 +191,8 @@ export const ResultsPage: React.FC<ResultsPageProps> = ({ submission, onExit }) 
             )}
 
             {!isPerfectionist && !isCleanRecord && (
-              <div className="flex items-center space-x-1.5 bg-slate-800 border border-slate-700 text-slate-300 px-3 py-1.5 rounded-xl text-xs font-medium">
-                <Sparkles className="h-4 w-4 text-slate-400" />
+              <div className="flex items-center space-x-1.5 bg-[#070A1E] border border-[#7B61FF]/30 text-slate-300 px-3 py-1.5 rounded-xl text-xs font-medium">
+                <Sparkles className="h-4 w-4 text-[#F72585]" />
                 <span>Assessment Completed</span>
               </div>
             )}
@@ -200,9 +200,9 @@ export const ResultsPage: React.FC<ResultsPageProps> = ({ submission, onExit }) 
         </div>
 
         {/* Summary Info Row */}
-        <div className="grid grid-cols-2 gap-4 bg-slate-950/80 p-4 rounded-2xl border border-slate-800 text-xs">
+        <div className="grid grid-cols-2 gap-4 bg-[#070A1E] p-4 rounded-2xl border border-[#7B61FF]/30 text-xs">
           <div className="flex items-center space-x-3">
-            <Clock className="h-5 w-5 text-indigo-400 shrink-0" />
+            <Clock className="h-5 w-5 text-[#F72585] shrink-0" />
             <div>
               <div className="text-slate-400 font-medium">Time Remaining at Submit</div>
               <div className="font-mono font-bold text-white text-sm">{submission.timeTaken}</div>
@@ -224,7 +224,7 @@ export const ResultsPage: React.FC<ResultsPageProps> = ({ submission, onExit }) 
         <div className="pt-2">
           <button
             onClick={onExit}
-            className="w-full py-3.5 px-6 rounded-2xl font-bold text-sm bg-gradient-to-r from-red-600 via-rose-600 to-red-500 hover:from-red-500 hover:to-rose-500 text-white flex items-center justify-center space-x-2 shadow-lg shadow-red-500/20 transition-all cursor-pointer active:scale-[0.99]"
+            className="w-full py-3.5 px-6 rounded-2xl font-bold text-sm bg-gradient-to-r from-[#F72585] to-[#7B61FF] hover:from-[#d91970] hover:to-[#674ce6] text-white flex items-center justify-center space-x-2 shadow-lg shadow-[#F72585]/30 border border-[#F72585]/40 transition-all cursor-pointer active:scale-[0.99]"
           >
             <LogOut className="h-4 w-4" />
             <span>Exit Portal & Return to Start</span>

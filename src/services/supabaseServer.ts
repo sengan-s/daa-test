@@ -107,16 +107,26 @@ export async function testSupabaseConnection(): Promise<{ connected: boolean; me
   try {
     const { data, error } = await client.from('daa_submissions').select('count', { count: 'exact', head: true });
     if (error) {
-      if (error.code === '42P01') { // Table does not exist
+      const isMissingTable =
+        error.code === '42P01' ||
+        error.code === 'PGRST205' ||
+        (error.message && (
+          error.message.includes('schema cache') ||
+          error.message.includes('does not exist') ||
+          error.message.includes('Could not find the table') ||
+          error.message.includes('relation')
+        ));
+
+      if (isMissingTable) {
         return {
           connected: true,
-          message: 'Connected to Supabase! Table "daa_submissions" needs to be created.',
+          message: 'Connected to Supabase! Table "daa_submissions" needs to be created in your Supabase SQL Editor.',
           tableExists: false,
         };
       }
       return {
         connected: false,
-        message: `Supabase query error: ${error.message} (${error.code})`,
+        message: `Supabase query notice: ${error.message} (${error.code})`,
         tableExists: false,
       };
     }
@@ -128,7 +138,7 @@ export async function testSupabaseConnection(): Promise<{ connected: boolean; me
   } catch (err: any) {
     return {
       connected: false,
-      message: `Supabase connection failed: ${err?.message || 'Unknown network error'}`,
+      message: `Supabase connection note: ${err?.message || 'Unknown network condition'}`,
       tableExists: false,
     };
   }
@@ -155,13 +165,26 @@ export async function saveSubmissionToSupabase(record: any): Promise<boolean> {
 
     const { error } = await client.from('daa_submissions').upsert(payload, { onConflict: 'id' });
     if (error) {
-      console.error('Failed to save submission to Supabase:', error.message);
+      const isMissingTable =
+        error.code === '42P01' ||
+        error.code === 'PGRST205' ||
+        (error.message && (
+          error.message.includes('schema cache') ||
+          error.message.includes('does not exist') ||
+          error.message.includes('Could not find the table')
+        ));
+
+      if (isMissingTable) {
+        console.warn('[Supabase Sync Notice] Table "public.daa_submissions" not created yet in Supabase SQL Editor. Submission saved to local storage.');
+      } else {
+        console.warn('[Supabase Sync Notice]', error.message);
+      }
       return false;
     }
     console.log(`Successfully synced submission ${payload.id} (${payload.name}) to Supabase DB.`);
     return true;
-  } catch (e) {
-    console.error('Exception during Supabase submission sync:', e);
+  } catch (e: any) {
+    console.warn('[Supabase Exception Notice] Local storage preserved:', e?.message || e);
     return false;
   }
 }
@@ -177,7 +200,20 @@ export async function fetchSubmissionsFromSupabase(): Promise<any[] | null> {
       .order('submitted_at', { ascending: false });
 
     if (error) {
-      console.error('Error fetching from Supabase:', error.message);
+      const isMissingTable =
+        error.code === '42P01' ||
+        error.code === 'PGRST205' ||
+        (error.message && (
+          error.message.includes('schema cache') ||
+          error.message.includes('does not exist') ||
+          error.message.includes('Could not find the table')
+        ));
+
+      if (isMissingTable) {
+        console.warn('[Supabase Fetch Notice] Table "public.daa_submissions" not created yet in Supabase schema cache. Falling back to local data.');
+      } else {
+        console.warn('[Supabase Fetch Notice]', error.message);
+      }
       return null;
     }
 
@@ -196,8 +232,8 @@ export async function fetchSubmissionsFromSupabase(): Promise<any[] | null> {
       submittedAt: row.submitted_at,
       syncedFromSupabase: true,
     }));
-  } catch (e) {
-    console.error('Exception fetching from Supabase:', e);
+  } catch (e: any) {
+    console.warn('[Supabase Fetch Exception Notice] Falling back to local data:', e?.message || e);
     return null;
   }
 }
