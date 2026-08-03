@@ -4,6 +4,15 @@ import fs from 'fs';
 import { spawn } from 'child_process';
 import { createServer as createViteServer } from 'vite';
 import vm from 'vm';
+import {
+  saveSubmissionToSupabase,
+  testSupabaseConnection,
+  getSupabaseCredentials,
+  saveSupabaseCredentials,
+  syncLocalSubmissionsToSupabase,
+  fetchSubmissionsFromSupabase,
+  getSupabaseSQLSchema,
+} from './src/services/supabaseServer';
 
 const app = express();
 const PORT = 3000;
@@ -850,12 +859,86 @@ app.post('/api/submit', async (req, res) => {
     filtered.push(record);
     saveData(SUBMISSIONS_FILE, filtered);
 
+    // Sync to Supabase in background (lazy & non-blocking)
+    saveSubmissionToSupabase(record).catch((err) => {
+      console.warn('Background Supabase submission sync warning:', err);
+    });
+
     res.json(record);
   } catch (err: any) {
     console.error('API /api/submit error:', err);
     res.status(500).json({ message: err?.message || 'Server error during submission' });
   }
 });
+
+// Supabase DB Connectivity APIs
+app.get('/api/supabase/status', async (req, res) => {
+  try {
+    const creds = getSupabaseCredentials();
+    const status = await testSupabaseConnection();
+    res.json({
+      configured: Boolean(creds.url && creds.key),
+      url: creds.url ? `${creds.url.substring(0, 18)}...` : '',
+      fullUrl: creds.url,
+      connected: status.connected,
+      tableExists: status.tableExists,
+      message: status.message,
+    });
+  } catch (err: any) {
+    res.status(500).json({ configured: false, connected: false, message: err?.message || 'Error checking Supabase status' });
+  }
+});
+
+app.post('/api/supabase/config', async (req, res) => {
+  try {
+    const { url, key } = req.body;
+    if (!url || !key) {
+      return res.status(400).json({ message: 'Both Supabase URL and Key are required.' });
+    }
+    saveSupabaseCredentials({ url: url.trim(), key: key.trim() });
+    const status = await testSupabaseConnection();
+    res.json({
+      success: status.connected,
+      message: status.message,
+      tableExists: status.tableExists,
+    });
+  } catch (e: any) {
+    res.status(500).json({ success: false, message: e?.message || 'Failed to save configuration' });
+  }
+});
+
+app.post('/api/supabase/sync', async (req, res) => {
+  try {
+    const submissions = loadData<any[]>(SUBMISSIONS_FILE, []);
+    const result = await syncLocalSubmissionsToSupabase(submissions);
+    res.json({
+      success: true,
+      syncedCount: result.synced,
+      failedCount: result.failed,
+      totalCount: submissions.length,
+    });
+  } catch (e: any) {
+    res.status(500).json({ success: false, message: e?.message || 'Sync failed' });
+  }
+});
+
+app.get('/api/supabase/schema', (req, res) => {
+  res.setHeader('Content-Type', 'text/plain');
+  res.send(getSupabaseSQLSchema());
+});
+
+app.get('/api/supabase/submissions', async (req, res) => {
+  try {
+    const data = await fetchSubmissionsFromSupabase();
+    if (data === null) {
+      return res.status(400).json({ message: 'Supabase DB not configured or unreachable. Falling back to local data.' });
+    }
+    res.json(data);
+  } catch (e: any) {
+    res.status(500).json({ message: e?.message || 'Error fetching Supabase submissions' });
+  }
+});
+
 
 // 3. Auto-sync session state
 app.post('/api/session/sync', (req, res) => {

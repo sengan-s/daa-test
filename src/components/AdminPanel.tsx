@@ -13,7 +13,15 @@ import {
   Clock,
   ShieldAlert,
   X,
-  FileSpreadsheet
+  FileSpreadsheet,
+  Database,
+  CloudUpload,
+  Copy,
+  Check,
+  ExternalLink,
+  Settings,
+  Zap,
+  Layers
 } from 'lucide-react';
 import { SubmissionRecord } from '../types';
 import { api } from '../services/api';
@@ -36,26 +44,68 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ onClose }) => {
   const [expandedRowId, setExpandedRowId] = useState<string | null>(null);
   const [selectedCodeProblem, setSelectedCodeProblem] = useState<'merge-sorted-array' | 'binary-search' | 'matrix-multiplication'>('merge-sorted-array');
 
+  // Supabase Database State
+  const [supabaseStatus, setSupabaseStatus] = useState<{
+    configured: boolean;
+    url: string;
+    fullUrl?: string;
+    connected: boolean;
+    tableExists: boolean;
+    message: string;
+  } | null>(null);
+  const [isSupabaseLoading, setIsSupabaseLoading] = useState(false);
+  const [showSupabaseModal, setShowSupabaseModal] = useState(false);
+  const [showSchemaModal, setShowSchemaModal] = useState(false);
+  const [supabaseUrlInput, setSupabaseUrlInput] = useState('');
+  const [supabaseKeyInput, setSupabaseKeyInput] = useState('');
+  const [supabaseMsg, setSupabaseMsg] = useState<{ type: 'success' | 'error' | 'info'; text: string } | null>(null);
+  const [sqlSchema, setSqlSchema] = useState('');
+  const [copiedSql, setCopiedSql] = useState(false);
+  const [activeDataSource, setActiveDataSource] = useState<'local' | 'supabase'>('local');
+
   // Load submissions if authenticated
   const fetchResults = async (authToken: string) => {
     setIsLoading(true);
     try {
-      const data = await api.getAdminResults(authToken);
-      setSubmissions(data);
+      if (activeDataSource === 'supabase') {
+        const data = await api.getSupabaseSubmissions();
+        setSubmissions(data);
+      } else {
+        const data = await api.getAdminResults(authToken);
+        setSubmissions(data);
+      }
     } catch (err: any) {
-      setToken(null);
-      localStorage.removeItem('daa_admin_token');
-      setLoginError('Session expired. Please log in again.');
+      if (activeDataSource === 'supabase') {
+        setSupabaseMsg({ type: 'error', text: err.message || 'Failed to fetch Supabase data' });
+      } else {
+        setToken(null);
+        localStorage.removeItem('daa_admin_token');
+        setLoginError('Session expired. Please log in again.');
+      }
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const fetchSupabaseStatus = async () => {
+    setIsSupabaseLoading(true);
+    try {
+      const status = await api.getSupabaseStatus();
+      setSupabaseStatus(status);
+      if (status.fullUrl) setSupabaseUrlInput(status.fullUrl);
+    } catch (e: any) {
+      console.error('Error getting Supabase status:', e);
+    } finally {
+      setIsSupabaseLoading(false);
     }
   };
 
   useEffect(() => {
     if (token) {
       fetchResults(token);
+      fetchSupabaseStatus();
     }
-  }, [token]);
+  }, [token, activeDataSource]);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -67,6 +117,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ onClose }) => {
       setToken(res.token);
       localStorage.setItem('daa_admin_token', res.token);
       fetchResults(res.token);
+      fetchSupabaseStatus();
     } catch (err: any) {
       setLoginError(err.message || 'Invalid password');
     } finally {
@@ -78,6 +129,68 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ onClose }) => {
     setToken(null);
     localStorage.removeItem('daa_admin_token');
   };
+
+  const handleExportCsv = () => {
+    if (!token) return;
+    const url = api.getExportCsvUrl(token);
+    window.open(url, '_blank');
+  };
+
+  const handleSaveSupabaseConfig = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSupabaseLoading(true);
+    setSupabaseMsg(null);
+
+    try {
+      const res = await api.saveSupabaseConfig(supabaseUrlInput, supabaseKeyInput);
+      setSupabaseMsg({
+        type: res.success ? 'success' : 'error',
+        text: res.message,
+      });
+      fetchSupabaseStatus();
+      if (res.success) {
+        setTimeout(() => setShowSupabaseModal(false), 1500);
+      }
+    } catch (err: any) {
+      setSupabaseMsg({ type: 'error', text: err.message || 'Configuration failed' });
+    } finally {
+      setIsSupabaseLoading(false);
+    }
+  };
+
+  const handleSyncToSupabase = async () => {
+    setIsSupabaseLoading(true);
+    setSupabaseMsg(null);
+    try {
+      const res = await api.syncSupabaseSubmissions();
+      setSupabaseMsg({
+        type: 'success',
+        text: `Successfully synced ${res.syncedCount} of ${res.totalCount} records to Supabase!`,
+      });
+      fetchSupabaseStatus();
+    } catch (err: any) {
+      setSupabaseMsg({ type: 'error', text: err.message || 'Sync failed' });
+    } finally {
+      setIsSupabaseLoading(false);
+    }
+  };
+
+  const handleFetchSchema = async () => {
+    try {
+      const schema = await api.getSupabaseSchema();
+      setSqlSchema(schema);
+      setShowSchemaModal(true);
+    } catch (e) {
+      console.error('Failed to get schema:', e);
+    }
+  };
+
+  const handleCopySchema = () => {
+    navigator.clipboard.writeText(sqlSchema);
+    setCopiedSql(true);
+    setTimeout(() => setCopiedSql(false), 2000);
+  };
+
 
   // Search & Sorting Filter
   const filteredSubmissions = submissions
@@ -99,13 +212,6 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ onClose }) => {
       if (valA > valB) return sortOrder === 'asc' ? 1 : -1;
       return 0;
     });
-
-  // Export CSV
-  const handleExportCsv = () => {
-    if (!token) return;
-    const url = api.getExportCsvUrl(token);
-    window.open(url, '_blank');
-  };
 
   // If not logged in: Password Modal
   if (!token) {
@@ -214,6 +320,108 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ onClose }) => {
           )}
         </div>
       </div>
+
+      {/* Supabase Database Connectivity Hub */}
+      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-lg space-y-4">
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <div className="flex items-center space-x-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+              <Database className="h-5 w-5" />
+            </div>
+            <div>
+              <div className="flex items-center space-x-2">
+                <h2 className="text-base font-bold text-white">Supabase Cloud Database Connectivity</h2>
+                {supabaseStatus?.connected ? (
+                  <span className="flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                    <CheckCircle2 className="h-3 w-3" />
+                    <span>Connected</span>
+                  </span>
+                ) : supabaseStatus?.configured ? (
+                  <span className="flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-500/20 text-amber-400 border border-amber-500/30">
+                    <Zap className="h-3 w-3" />
+                    <span>Schema / Setup Required</span>
+                  </span>
+                ) : (
+                  <span className="flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-slate-800 text-slate-400 border border-slate-700">
+                    <span>Not Configured</span>
+                  </span>
+                )}
+              </div>
+              <p className="text-xs text-slate-400 mt-0.5">
+                {supabaseStatus?.message || 'Sync submissions to cloud PostgreSQL database table daa_submissions.'}
+              </p>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-2">
+            {/* Source Switcher */}
+            <div className="bg-slate-950 p-1 rounded-xl border border-slate-800 flex items-center space-x-1">
+              <button
+                onClick={() => setActiveDataSource('local')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                  activeDataSource === 'local'
+                    ? 'bg-indigo-600 text-white shadow-md'
+                    : 'text-slate-400 hover:text-white'
+                }`}
+              >
+                Local JSON
+              </button>
+              <button
+                onClick={() => setActiveDataSource('supabase')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center space-x-1 ${
+                  activeDataSource === 'supabase'
+                    ? 'bg-emerald-600 text-white shadow-md'
+                    : 'text-slate-400 hover:text-white'
+                }`}
+              >
+                <Database className="h-3.5 w-3.5" />
+                <span>Supabase Live DB</span>
+              </button>
+            </div>
+
+            <button
+              onClick={handleSyncToSupabase}
+              disabled={isSupabaseLoading}
+              className="flex items-center space-x-1.5 px-3 py-2 bg-indigo-600/20 hover:bg-indigo-600/30 text-indigo-300 border border-indigo-500/30 rounded-xl text-xs font-bold transition-all cursor-pointer"
+            >
+              <CloudUpload className={`h-3.5 w-3.5 ${isSupabaseLoading ? 'animate-bounce' : ''}`} />
+              <span>Sync Local → Supabase</span>
+            </button>
+
+            <button
+              onClick={handleFetchSchema}
+              className="flex items-center space-x-1.5 px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 rounded-xl text-xs font-semibold transition-colors cursor-pointer"
+            >
+              <Code2 className="h-3.5 w-3.5 text-purple-400" />
+              <span>SQL Schema</span>
+            </button>
+
+            <button
+              onClick={() => setShowSupabaseModal(true)}
+              className="flex items-center space-x-1.5 px-3 py-2 bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 rounded-xl text-xs font-bold transition-colors cursor-pointer"
+            >
+              <Settings className="h-3.5 w-3.5 text-emerald-400" />
+              <span>Configure Keys</span>
+            </button>
+          </div>
+        </div>
+
+        {supabaseMsg && (
+          <div
+            className={`p-3 rounded-xl border text-xs font-medium flex items-center justify-between ${
+              supabaseMsg.type === 'success'
+                ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-300'
+                : 'bg-red-500/10 border-red-500/30 text-red-300'
+            }`}
+          >
+            <span>{supabaseMsg.text}</span>
+            <button onClick={() => setSupabaseMsg(null)} className="text-slate-400 hover:text-white">
+              <X className="h-3.5 w-3.5" />
+            </button>
+          </div>
+        )}
+      </div>
+
 
       {/* Filters & Search */}
       <div className="flex flex-wrap items-center justify-between gap-4 bg-slate-900/60 border border-slate-800/80 rounded-2xl p-4">
@@ -409,6 +617,134 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ onClose }) => {
           </table>
         </div>
       </div>
+
+      {/* Supabase Settings Modal */}
+      {showSupabaseModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md animate-fade-in">
+          <div className="w-full max-w-lg bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-2xl relative space-y-4">
+            <button
+              onClick={() => setShowSupabaseModal(false)}
+              className="absolute top-4 right-4 text-slate-400 hover:text-white p-1 rounded-lg bg-slate-800 cursor-pointer"
+            >
+              <X className="h-4 w-4" />
+            </button>
+
+            <div className="flex items-center space-x-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                <Database className="h-5 w-5" />
+              </div>
+              <div>
+                <h3 className="text-lg font-bold text-white">Configure Supabase Database</h3>
+                <p className="text-xs text-slate-400">Connect your Supabase project to auto-persist assessment results</p>
+              </div>
+            </div>
+
+            <form onSubmit={handleSaveSupabaseConfig} className="space-y-4">
+              <div className="space-y-1.5">
+                <label className="block text-xs font-semibold text-slate-300">
+                  Supabase Project URL
+                </label>
+                <input
+                  type="url"
+                  value={supabaseUrlInput}
+                  onChange={(e) => setSupabaseUrlInput(e.target.value)}
+                  placeholder="https://your-project.supabase.co"
+                  required
+                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 font-mono"
+                />
+              </div>
+
+              <div className="space-y-1.5">
+                <label className="block text-xs font-semibold text-slate-300">
+                  Supabase Anon Key or Service Role Key
+                </label>
+                <input
+                  type="password"
+                  value={supabaseKeyInput}
+                  onChange={(e) => setSupabaseKeyInput(e.target.value)}
+                  placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6..."
+                  required
+                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 font-mono"
+                />
+              </div>
+
+              {supabaseMsg && (
+                <div
+                  className={`p-3 rounded-xl border text-xs ${
+                    supabaseMsg.type === 'success'
+                      ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-300'
+                      : 'bg-red-500/10 border-red-500/30 text-red-300'
+                  }`}
+                >
+                  {supabaseMsg.text}
+                </div>
+              )}
+
+              <div className="flex items-center justify-end space-x-3 pt-2">
+                <button
+                  type="button"
+                  onClick={() => setShowSupabaseModal(false)}
+                  className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs font-semibold cursor-pointer"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  disabled={isSupabaseLoading}
+                  className="px-5 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-bold shadow-lg shadow-emerald-600/25 flex items-center space-x-1.5 cursor-pointer disabled:opacity-50"
+                >
+                  {isSupabaseLoading ? 'Connecting...' : 'Save & Verify Connection'}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* SQL DDL Schema Modal */}
+      {showSchemaModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md animate-fade-in">
+          <div className="w-full max-w-2xl bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-2xl relative space-y-4">
+            <button
+              onClick={() => setShowSchemaModal(false)}
+              className="absolute top-4 right-4 text-slate-400 hover:text-white p-1 rounded-lg bg-slate-800 cursor-pointer"
+            >
+              <X className="h-4 w-4" />
+            </button>
+
+            <div className="flex items-center space-x-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-500/20 text-purple-400 border border-purple-500/30">
+                <Code2 className="h-5 w-5" />
+              </div>
+              <div>
+                <h3 className="text-lg font-bold text-white">Supabase SQL DDL Schema</h3>
+                <p className="text-xs text-slate-400">Copy and execute in Supabase SQL Editor to create table daa_submissions</p>
+              </div>
+            </div>
+
+            <div className="relative bg-slate-950 p-4 rounded-xl border border-slate-800 overflow-x-auto max-h-80">
+              <button
+                onClick={handleCopySchema}
+                className="absolute top-3 right-3 flex items-center space-x-1 px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-xs font-bold transition-all cursor-pointer shadow-md"
+              >
+                {copiedSql ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
+                <span>{copiedSql ? 'Copied!' : 'Copy SQL'}</span>
+              </button>
+              <pre className="font-mono text-xs text-purple-200 whitespace-pre">{sqlSchema}</pre>
+            </div>
+
+            <div className="flex justify-end pt-2">
+              <button
+                onClick={() => setShowSchemaModal(false)}
+                className="px-5 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-xl text-xs font-bold cursor-pointer"
+              >
+                Done
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
+
