@@ -1,0 +1,6 @@
+{
+  "name": "DAA Assessment",
+  "description": "Online Coding Assessment Platform for Java with real-time judging, test case execution, candidate anti-cheating, and admin panel.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
