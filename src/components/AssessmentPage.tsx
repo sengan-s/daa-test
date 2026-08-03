@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Editor from '@monaco-editor/react';
-import confetti from 'canvas-confetti';
+import { fireConfetti } from '../utils/confetti';
 import {
   CheckCircle2,
   XCircle,
@@ -200,7 +200,7 @@ export const AssessmentPage: React.FC<AssessmentPageProps> = ({
 
       if (allPassed) {
         soundService.playPass();
-        confetti({
+        fireConfetti({
           particleCount: 80,
           spread: 70,
           origin: { y: 0.6 },

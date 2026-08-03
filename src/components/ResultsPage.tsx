@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import confetti from 'canvas-confetti';
+import { fireConfetti } from '../utils/confetti';
 import {
   CheckCircle2,
   Award,
@@ -25,7 +25,7 @@ export const ResultsPage: React.FC<ResultsPageProps> = ({ submission, onExit }) 
 
   // Score count-up animation and Confetti
   useEffect(() => {
-    confetti({
+    fireConfetti({
       particleCount: 120,
       spread: 90,
       origin: { y: 0.5 },

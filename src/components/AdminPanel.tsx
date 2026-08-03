@@ -138,9 +138,12 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ onClose }) => {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter password"
+                placeholder="Enter passkey (e.g., 250806 or admin)"
                 className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
+              <p className="text-[11px] text-slate-400 mt-1 flex items-center justify-between">
+                <span>Passkey: <code className="text-indigo-300 font-mono font-bold bg-slate-800 px-1.5 py-0.5 rounded">250806</code> or <code className="text-indigo-300 font-mono font-bold bg-slate-800 px-1.5 py-0.5 rounded">admin</code></span>
+              </p>
             </div>
 
             {loginError && (
