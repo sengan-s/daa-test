@@ -1,0 +1,2696 @@
+[
+  {
+    "id": "4dh4dib89",
+    "sessionId": "ef1lfjw3n",
+    "rollNo": "2022-SS-11",
+    "name": "sengan",
+    "mergeSortMarks": 3,
+    "binarySearchMarks": 6,
+    "matrixMultMarks": 0,
+    "totalScore": 9,
+    "timeTaken": "00:37",
+    "violations": 2,
+    "submittedAt": "2026-08-03T15:31:16.102Z",
+    "code": {
+      "merge-sorted-array": "public class Solution {\n    public static void merge(int[] nums1, int m, int[] nums2, int n) {\n        // candidate writes code here — modify nums1 in place, don't return anything\n    }\n}",
+      "binary-search": "public class Solution {\n    public static int binarySearch(int[] arr, int target) {\n        // candidate writes code here\n        return -1;\n    }\n}",
+      "matrix-multiplication": "public class Solution {\n    public static int[][] multiply(int[][] A, int[][] B) {\n        // candidate writes code here\n        return new int[0][0];\n    }\n}"
+    },
+    "testBreakdown": {
+      "merge-sorted-array": {
+        "problemId": "merge-sorted-array",
+        "compiled": true,
+        "compilationError": "",
+        "testResults": [
+          {
+            "testCaseId": "msa-v1",
+            "passed": false,
+            "input": "nums1=[1,2,3,0,0,0], m=3, nums2=[2,5,6], n=3",
+            "expectedOutput": "[1, 2, 2, 3, 5, 6]",
+            "actualOutput": "[1, 2, 3, 0, 0, 0]",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "msa-v2",
+            "passed": true,
+            "input": "nums1=[1], m=1, nums2=[], n=0",
+            "expectedOutput": "[1]",
+            "actualOutput": "[1]",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "msa-v3",
+            "passed": false,
+            "input": "nums1=[0], m=0, nums2=[1], n=1",
+            "expectedOutput": "[1]",
+            "actualOutput": "[0]",
+            "isHidden": false,
+            "executionTimeMs": 0
+          },
+          {
+            "testCaseId": "msa-h1",
+            "passed": false,
+            "input": "nums1=[4,5,6,0,0,0], m=3, nums2=[1,2,3], n=3",
+            "expectedOutput": "[1, 2, 3, 4, 5, 6]",
+            "actualOutput": "[4, 5, 6, 0, 0, 0]",
+            "isHidden": true,
+            "executionTimeMs": 2
+          },
+          {
+            "testCaseId": "msa-h2",
+            "passed": false,
+            "input": "nums1=[0,0,0,0], m=0, nums2=[1,2,3,4], n=4",
+            "expectedOutput": "[1, 2, 3, 4]",
+            "actualOutput": "[0, 0, 0, 0]",
+            "isHidden": true,
+            "executionTimeMs": 1
+          }
+        ],
+        "passedCount": 1,
+        "totalCount": 5,
+        "earnedMarks": 3
+      },
+      "binary-search": {
+        "problemId": "binary-search",
+        "compiled": true,
+        "compilationError": "",
+        "testResults": [
+          {
+            "testCaseId": "bs-v1",
+            "passed": false,
+            "input": "arr=[1,3,5,7,9,11], target=7",
+            "expectedOutput": "3",
+            "actualOutput": "-1",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "bs-v2",
+            "passed": true,
+            "input": "arr=[2,4,6,8], target=5",
+            "expectedOutput": "-1",
+            "actualOutput": "-1",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "bs-v3",
+            "passed": false,
+            "input": "arr=[10], target=10",
+            "expectedOutput": "0",
+            "actualOutput": "-1",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "bs-h1",
+            "passed": true,
+            "input": "arr=[], target=1",
+            "expectedOutput": "-1",
+            "actualOutput": "-1",
+            "isHidden": true,
+            "executionTimeMs": 2
+          },
+          {
+            "testCaseId": "bs-h2",
+            "passed": false,
+            "input": "arr=[1,2,3,4,5], target=1",
+            "expectedOutput": "0",
+            "actualOutput": "-1",
+            "isHidden": true,
+            "executionTimeMs": 1
+          }
+        ],
+        "passedCount": 2,
+        "totalCount": 5,
+        "earnedMarks": 6
+      },
+      "matrix-multiplication": {
+        "problemId": "matrix-multiplication",
+        "compiled": false,
+        "compilationError": "Compilation Error: int is not defined",
+        "testResults": [
+          {
+            "testCaseId": "mm-v1",
+            "passed": false,
+            "input": "A=[[1,2],[3,4]], B=[[5,6],[7,8]]",
+            "expectedOutput": "[[19, 22], [43, 50]]",
+            "actualOutput": "",
+            "error": "Compilation Error: int is not defined",
+            "isHidden": false,
+            "executionTimeMs": 6
+          },
+          {
+            "testCaseId": "mm-v2",
+            "passed": false,
+            "input": "A=[[1,0],[0,1]], B=[[2,3],[4,5]]",
+            "expectedOutput": "[[2, 3], [4, 5]]",
+            "actualOutput": "",
+            "error": "Compilation Error: int is not defined",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "mm-v3",
+            "passed": false,
+            "input": "A=[[1,2,3]], B=[[1],[1],[1]]",
+            "expectedOutput": "[[6]]",
+            "actualOutput": "",
+            "error": "Compilation Error: int is not defined",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "mm-h1",
+            "passed": false,
+            "input": "A=[[2]], B=[[3]]",
+            "expectedOutput": "[[6]]",
+            "actualOutput": "",
+            "error": "Compilation Error: int is not defined",
+            "isHidden": true,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "mm-h2",
+            "passed": false,
+            "input": "A=[[1,1],[1,1]], B=[[1,1],[1,1]]",
+            "expectedOutput": "[[2, 2], [2, 2]]",
+            "actualOutput": "",
+            "error": "Compilation Error: int is not defined",
+            "isHidden": true,
+            "executionTimeMs": 1
+          }
+        ],
+        "passedCount": 0,
+        "totalCount": 5,
+        "earnedMarks": 0
+      }
+    }
+  },
+  {
+    "id": "w6d9lz60a",
+    "sessionId": "vqk4ulajs",
+    "rollNo": "2024-PEC-11",
+    "name": "asmi",
+    "mergeSortMarks": 3,
+    "binarySearchMarks": 6,
+    "matrixMultMarks": 0,
+    "totalScore": 9,
+    "timeTaken": "06:18",
+    "violations": 3,
+    "submittedAt": "2026-08-03T15:49:16.251Z",
+    "code": {
+      "merge-sorted-array": "#include <stdio.h>\n\nvoid merge(int* nums1, int nums1Size, int m, int* nums2, int nums2Size, int n) {\n    // Modify nums1 in-place, do not return anything\n}",
+      "binary-search": "public class Solution {\n    public static int binarySearch(int[] arr, int target) {\n        // Write your code here\n        return -1;\n    }\n}",
+      "matrix-multiplication": "public class Solution {\n    public static int[][] multiply(int[][] A, int[][] B) {\n        // Write your code here\n        return new int[0][0];\n    }\n}"
+    },
+    "testBreakdown": {
+      "merge-sorted-array": {
+        "problemId": "merge-sorted-array",
+        "language": "c",
+        "compiled": true,
+        "compilationError": "",
+        "testResults": [
+          {
+            "testCaseId": "msa-v1",
+            "passed": false,
+            "input": "nums1=[1,2,3,0,0,0], m=3, nums2=[2,5,6], n=3",
+            "expectedOutput": "[1, 2, 2, 3, 5, 6]",
+            "actualOutput": "[1, 2, 3, 0, 0, 0]",
+            "isHidden": false,
+            "executionTimeMs": 4
+          },
+          {
+            "testCaseId": "msa-v2",
+            "passed": true,
+            "input": "nums1=[1], m=1, nums2=[], n=0",
+            "expectedOutput": "[1]",
+            "actualOutput": "[1]",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "msa-v3",
+            "passed": false,
+            "input": "nums1=[0], m=0, nums2=[1], n=1",
+            "expectedOutput": "[1]",
+            "actualOutput": "[0]",
+            "isHidden": false,
+            "executionTimeMs": 2
+          },
+          {
+            "testCaseId": "msa-h1",
+            "passed": false,
+            "input": "nums1=[4,5,6,0,0,0], m=3, nums2=[1,2,3], n=3",
+            "expectedOutput": "[1, 2, 3, 4, 5, 6]",
+            "actualOutput": "[4, 5, 6, 0, 0, 0]",
+            "isHidden": true,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "msa-h2",
+            "passed": false,
+            "input": "nums1=[0,0,0,0], m=0, nums2=[1,2,3,4], n=4",
+            "expectedOutput": "[1, 2, 3, 4]",
+            "actualOutput": "[0, 0, 0, 0]",
+            "isHidden": true,
+            "executionTimeMs": 1
+          }
+        ],
+        "passedCount": 1,
+        "totalCount": 5,
+        "earnedMarks": 3
+      },
+      "binary-search": {
+        "problemId": "binary-search",
+        "language": "java",
+        "compiled": true,
+        "compilationError": "",
+        "testResults": [
+          {
+            "testCaseId": "bs-v1",
+            "passed": false,
+            "input": "arr=[1,3,5,7,9,11], target=7",
+            "expectedOutput": "3",
+            "actualOutput": "-1",
+            "isHidden": false,
+            "executionTimeMs": 9
+          },
+          {
+            "testCaseId": "bs-v2",
+            "passed": true,
+            "input": "arr=[2,4,6,8], target=5",
+            "expectedOutput": "-1",
+            "actualOutput": "-1",
+            "isHidden": false,
+            "executionTimeMs": 2
+          },
+          {
+            "testCaseId": "bs-v3",
+            "passed": false,
+            "input": "arr=[10], target=10",
+            "expectedOutput": "0",
+            "actualOutput": "-1",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "bs-h1",
+            "passed": true,
+            "input": "arr=[], target=1",
+            "expectedOutput": "-1",
+            "actualOutput": "-1",
+            "isHidden": true,
+            "executionTimeMs": 2
+          },
+          {
+            "testCaseId": "bs-h2",
+            "passed": false,
+            "input": "arr=[1,2,3,4,5], target=1",
+            "expectedOutput": "0",
+            "actualOutput": "-1",
+            "isHidden": true,
+            "executionTimeMs": 1
+          }
+        ],
+        "passedCount": 2,
+        "totalCount": 5,
+        "earnedMarks": 6
+      },
+      "matrix-multiplication": {
+        "problemId": "matrix-multiplication",
+        "language": "java",
+        "compiled": false,
+        "compilationError": "Compilation Error: int is not defined",
+        "testResults": [
+          {
+            "testCaseId": "mm-v1",
+            "passed": false,
+            "input": "A=[[1,2],[3,4]], B=[[5,6],[7,8]]",
+            "expectedOutput": "[[19, 22], [43, 50]]",
+            "actualOutput": "",
+            "error": "Compilation Error: int is not defined",
+            "isHidden": false,
+            "executionTimeMs": 9
+          },
+          {
+            "testCaseId": "mm-v2",
+            "passed": false,
+            "input": "A=[[1,0],[0,1]], B=[[2,3],[4,5]]",
+            "expectedOutput": "[[2, 3], [4, 5]]",
+            "actualOutput": "",
+            "error": "Compilation Error: int is not defined",
+            "isHidden": false,
+            "executionTimeMs": 3
+          },
+          {
+            "testCaseId": "mm-v3",
+            "passed": false,
+            "input": "A=[[1,2,3]], B=[[1],[1],[1]]",
+            "expectedOutput": "[[6]]",
+            "actualOutput": "",
+            "error": "Compilation Error: int is not defined",
+            "isHidden": false,
+            "executionTimeMs": 2
+          },
+          {
+            "testCaseId": "mm-h1",
+            "passed": false,
+            "input": "A=[[2]], B=[[3]]",
+            "expectedOutput": "[[6]]",
+            "actualOutput": "",
+            "error": "Compilation Error: int is not defined",
+            "isHidden": true,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "mm-h2",
+            "passed": false,
+            "input": "A=[[1,1],[1,1]], B=[[1,1],[1,1]]",
+            "expectedOutput": "[[2, 2], [2, 2]]",
+            "actualOutput": "",
+            "error": "Compilation Error: int is not defined",
+            "isHidden": true,
+            "executionTimeMs": 2
+          }
+        ],
+        "passedCount": 0,
+        "totalCount": 5,
+        "earnedMarks": 0
+      }
+    }
+  },
+  {
+    "id": "djv9ot7o2",
+    "sessionId": "test_sess",
+    "rollNo": "2023-CC-11",
+    "name": "Test Candidate",
+    "mergeSortMarks": 3,
+    "binarySearchMarks": 6,
+    "matrixMultMarks": 0,
+    "totalScore": 9,
+    "timeTaken": "05:00",
+    "violations": 0,
+    "submittedAt": "2026-08-03T16:24:05.340Z",
+    "code": {
+      "merge-sorted-array": "public class Solution { public static void merge(int[] nums1, int m, int[] nums2, int n) {} }",
+      "binary-search": "public class Solution { public static int binarySearch(int[] arr, int target) { return -1; } }",
+      "matrix-multiplication": "public class Solution { public static int[][] multiply(int[][] A, int[][] B) { return new int[0][0]; } }"
+    },
+    "testBreakdown": {
+      "merge-sorted-array": {
+        "problemId": "merge-sorted-array",
+        "language": "java",
+        "compiled": true,
+        "compilationError": "",
+        "testResults": [
+          {
+            "testCaseId": "msa-v1",
+            "passed": false,
+            "input": "nums1=[1,2,3,0,0,0], m=3, nums2=[2,5,6], n=3",
+            "expectedOutput": "[1, 2, 2, 3, 5, 6]",
+            "actualOutput": "[1, 2, 3, 0, 0, 0]",
+            "isHidden": false,
+            "executionTimeMs": 9
+          },
+          {
+            "testCaseId": "msa-v2",
+            "passed": true,
+            "input": "nums1=[1], m=1, nums2=[], n=0",
+            "expectedOutput": "[1]",
+            "actualOutput": "[1]",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "msa-v3",
+            "passed": false,
+            "input": "nums1=[0], m=0, nums2=[1], n=1",
+            "expectedOutput": "[1]",
+            "actualOutput": "[0]",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "msa-h1",
+            "passed": false,
+            "input": "nums1=[4,5,6,0,0,0], m=3, nums2=[1,2,3], n=3",
+            "expectedOutput": "[1, 2, 3, 4, 5, 6]",
+            "actualOutput": "[4, 5, 6, 0, 0, 0]",
+            "isHidden": true,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "msa-h2",
+            "passed": false,
+            "input": "nums1=[0,0,0,0], m=0, nums2=[1,2,3,4], n=4",
+            "expectedOutput": "[1, 2, 3, 4]",
+            "actualOutput": "[0, 0, 0, 0]",
+            "isHidden": true,
+            "executionTimeMs": 1
+          }
+        ],
+        "passedCount": 1,
+        "totalCount": 5,
+        "earnedMarks": 3
+      },
+      "binary-search": {
+        "problemId": "binary-search",
+        "language": "java",
+        "compiled": true,
+        "compilationError": "",
+        "testResults": [
+          {
+            "testCaseId": "bs-v1",
+            "passed": false,
+            "input": "arr=[1,3,5,7,9,11], target=7",
+            "expectedOutput": "3",
+            "actualOutput": "-1",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "bs-v2",
+            "passed": true,
+            "input": "arr=[2,4,6,8], target=5",
+            "expectedOutput": "-1",
+            "actualOutput": "-1",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "bs-v3",
+            "passed": false,
+            "input": "arr=[10], target=10",
+            "expectedOutput": "0",
+            "actualOutput": "-1",
+            "isHidden": false,
+            "executionTimeMs": 0
+          },
+          {
+            "testCaseId": "bs-h1",
+            "passed": true,
+            "input": "arr=[], target=1",
+            "expectedOutput": "-1",
+            "actualOutput": "-1",
+            "isHidden": true,
+            "executionTimeMs": 2
+          },
+          {
+            "testCaseId": "bs-h2",
+            "passed": false,
+            "input": "arr=[1,2,3,4,5], target=1",
+            "expectedOutput": "0",
+            "actualOutput": "-1",
+            "isHidden": true,
+            "executionTimeMs": 0
+          }
+        ],
+        "passedCount": 2,
+        "totalCount": 5,
+        "earnedMarks": 6
+      },
+      "matrix-multiplication": {
+        "problemId": "matrix-multiplication",
+        "language": "java",
+        "compiled": false,
+        "compilationError": "Compilation Error: int is not defined",
+        "testResults": [
+          {
+            "testCaseId": "mm-v1",
+            "passed": false,
+            "input": "A=[[1,2],[3,4]], B=[[5,6],[7,8]]",
+            "expectedOutput": "[[19, 22], [43, 50]]",
+            "actualOutput": "",
+            "error": "Compilation Error: int is not defined",
+            "isHidden": false,
+            "executionTimeMs": 11
+          },
+          {
+            "testCaseId": "mm-v2",
+            "passed": false,
+            "input": "A=[[1,0],[0,1]], B=[[2,3],[4,5]]",
+            "expectedOutput": "[[2, 3], [4, 5]]",
+            "actualOutput": "",
+            "error": "Compilation Error: int is not defined",
+            "isHidden": false,
+            "executionTimeMs": 2
+          },
+          {
+            "testCaseId": "mm-v3",
+            "passed": false,
+            "input": "A=[[1,2,3]], B=[[1],[1],[1]]",
+            "expectedOutput": "[[6]]",
+            "actualOutput": "",
+            "error": "Compilation Error: int is not defined",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "mm-h1",
+            "passed": false,
+            "input": "A=[[2]], B=[[3]]",
+            "expectedOutput": "[[6]]",
+            "actualOutput": "",
+            "error": "Compilation Error: int is not defined",
+            "isHidden": true,
+            "executionTimeMs": 2
+          },
+          {
+            "testCaseId": "mm-h2",
+            "passed": false,
+            "input": "A=[[1,1],[1,1]], B=[[1,1],[1,1]]",
+            "expectedOutput": "[[2, 2], [2, 2]]",
+            "actualOutput": "",
+            "error": "Compilation Error: int is not defined",
+            "isHidden": true,
+            "executionTimeMs": 1
+          }
+        ],
+        "passedCount": 0,
+        "totalCount": 5,
+        "earnedMarks": 0
+      }
+    }
+  },
+  {
+    "id": "28y2f61f9",
+    "sessionId": "test_sess_2",
+    "rollNo": "2023-CC-12",
+    "name": "Test Candidate 2",
+    "mergeSortMarks": 3,
+    "binarySearchMarks": 6,
+    "matrixMultMarks": 0,
+    "totalScore": 9,
+    "timeTaken": "05:00",
+    "violations": 0,
+    "submittedAt": "2026-08-03T16:24:27.674Z",
+    "code": {
+      "merge-sorted-array": "public class Solution { public static void merge(int[] nums1, int m, int[] nums2, int n) {} }",
+      "binary-search": "public class Solution { public static int binarySearch(int[] arr, int target) { return -1; } }",
+      "matrix-multiplication": "public class Solution { public static int[][] multiply(int[][] A, int[][] B) { return new int[0][0]; } }"
+    },
+    "testBreakdown": {
+      "merge-sorted-array": {
+        "problemId": "merge-sorted-array",
+        "language": "java",
+        "compiled": true,
+        "compilationError": "",
+        "testResults": [
+          {
+            "testCaseId": "msa-v1",
+            "passed": false,
+            "input": "nums1=[1,2,3,0,0,0], m=3, nums2=[2,5,6], n=3",
+            "expectedOutput": "[1, 2, 2, 3, 5, 6]",
+            "actualOutput": "[1, 2, 3, 0, 0, 0]",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "msa-v2",
+            "passed": true,
+            "input": "nums1=[1], m=1, nums2=[], n=0",
+            "expectedOutput": "[1]",
+            "actualOutput": "[1]",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "msa-v3",
+            "passed": false,
+            "input": "nums1=[0], m=0, nums2=[1], n=1",
+            "expectedOutput": "[1]",
+            "actualOutput": "[0]",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "msa-h1",
+            "passed": false,
+            "input": "nums1=[4,5,6,0,0,0], m=3, nums2=[1,2,3], n=3",
+            "expectedOutput": "[1, 2, 3, 4, 5, 6]",
+            "actualOutput": "[4, 5, 6, 0, 0, 0]",
+            "isHidden": true,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "msa-h2",
+            "passed": false,
+            "input": "nums1=[0,0,0,0], m=0, nums2=[1,2,3,4], n=4",
+            "expectedOutput": "[1, 2, 3, 4]",
+            "actualOutput": "[0, 0, 0, 0]",
+            "isHidden": true,
+            "executionTimeMs": 1
+          }
+        ],
+        "passedCount": 1,
+        "totalCount": 5,
+        "earnedMarks": 3
+      },
+      "binary-search": {
+        "problemId": "binary-search",
+        "language": "java",
+        "compiled": true,
+        "compilationError": "",
+        "testResults": [
+          {
+            "testCaseId": "bs-v1",
+            "passed": false,
+            "input": "arr=[1,3,5,7,9,11], target=7",
+            "expectedOutput": "3",
+            "actualOutput": "-1",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "bs-v2",
+            "passed": true,
+            "input": "arr=[2,4,6,8], target=5",
+            "expectedOutput": "-1",
+            "actualOutput": "-1",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "bs-v3",
+            "passed": false,
+            "input": "arr=[10], target=10",
+            "expectedOutput": "0",
+            "actualOutput": "-1",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "bs-h1",
+            "passed": true,
+            "input": "arr=[], target=1",
+            "expectedOutput": "-1",
+            "actualOutput": "-1",
+            "isHidden": true,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "bs-h2",
+            "passed": false,
+            "input": "arr=[1,2,3,4,5], target=1",
+            "expectedOutput": "0",
+            "actualOutput": "-1",
+            "isHidden": true,
+            "executionTimeMs": 1
+          }
+        ],
+        "passedCount": 2,
+        "totalCount": 5,
+        "earnedMarks": 6
+      },
+      "matrix-multiplication": {
+        "problemId": "matrix-multiplication",
+        "language": "java",
+        "compiled": false,
+        "compilationError": "Compilation Error: int is not defined",
+        "testResults": [
+          {
+            "testCaseId": "mm-v1",
+            "passed": false,
+            "input": "A=[[1,2],[3,4]], B=[[5,6],[7,8]]",
+            "expectedOutput": "[[19, 22], [43, 50]]",
+            "actualOutput": "",
+            "error": "Compilation Error: int is not defined",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "mm-v2",
+            "passed": false,
+            "input": "A=[[1,0],[0,1]], B=[[2,3],[4,5]]",
+            "expectedOutput": "[[2, 3], [4, 5]]",
+            "actualOutput": "",
+            "error": "Compilation Error: int is not defined",
+            "isHidden": false,
+            "executionTimeMs": 2
+          },
+          {
+            "testCaseId": "mm-v3",
+            "passed": false,
+            "input": "A=[[1,2,3]], B=[[1],[1],[1]]",
+            "expectedOutput": "[[6]]",
+            "actualOutput": "",
+            "error": "Compilation Error: int is not defined",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "mm-h1",
+            "passed": false,
+            "input": "A=[[2]], B=[[3]]",
+            "expectedOutput": "[[6]]",
+            "actualOutput": "",
+            "error": "Compilation Error: int is not defined",
+            "isHidden": true,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "mm-h2",
+            "passed": false,
+            "input": "A=[[1,1],[1,1]], B=[[1,1],[1,1]]",
+            "expectedOutput": "[[2, 2], [2, 2]]",
+            "actualOutput": "",
+            "error": "Compilation Error: int is not defined",
+            "isHidden": true,
+            "executionTimeMs": 2
+          }
+        ],
+        "passedCount": 0,
+        "totalCount": 5,
+        "earnedMarks": 0
+      }
+    }
+  },
+  {
+    "id": "hqrybxk5c",
+    "sessionId": "test_sess_3",
+    "rollNo": "2023-CC-13",
+    "name": "Test Candidate 3",
+    "mergeSortMarks": 3,
+    "binarySearchMarks": 6,
+    "matrixMultMarks": 0,
+    "totalScore": 9,
+    "timeTaken": "05:00",
+    "violations": 0,
+    "submittedAt": "2026-08-03T16:24:44.248Z",
+    "code": {
+      "merge-sorted-array": "public class Solution { public static void merge(int[] nums1, int m, int[] nums2, int n) {} }",
+      "binary-search": "public class Solution { public static int binarySearch(int[] arr, int target) { return -1; } }",
+      "matrix-multiplication": "public class Solution { public static int[][] multiply(int[][] A, int[][] B) { return new int[0][0]; } }"
+    },
+    "testBreakdown": {
+      "merge-sorted-array": {
+        "problemId": "merge-sorted-array",
+        "language": "java",
+        "compiled": true,
+        "compilationError": "",
+        "testResults": [
+          {
+            "testCaseId": "msa-v1",
+            "passed": false,
+            "input": "nums1=[1,2,3,0,0,0], m=3, nums2=[2,5,6], n=3",
+            "expectedOutput": "[1, 2, 2, 3, 5, 6]",
+            "actualOutput": "[1, 2, 3, 0, 0, 0]",
+            "isHidden": false,
+            "executionTimeMs": 2
+          },
+          {
+            "testCaseId": "msa-v2",
+            "passed": true,
+            "input": "nums1=[1], m=1, nums2=[], n=0",
+            "expectedOutput": "[1]",
+            "actualOutput": "[1]",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "msa-v3",
+            "passed": false,
+            "input": "nums1=[0], m=0, nums2=[1], n=1",
+            "expectedOutput": "[1]",
+            "actualOutput": "[0]",
+            "isHidden": false,
+            "executionTimeMs": 2
+          },
+          {
+            "testCaseId": "msa-h1",
+            "passed": false,
+            "input": "nums1=[4,5,6,0,0,0], m=3, nums2=[1,2,3], n=3",
+            "expectedOutput": "[1, 2, 3, 4, 5, 6]",
+            "actualOutput": "[4, 5, 6, 0, 0, 0]",
+            "isHidden": true,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "msa-h2",
+            "passed": false,
+            "input": "nums1=[0,0,0,0], m=0, nums2=[1,2,3,4], n=4",
+            "expectedOutput": "[1, 2, 3, 4]",
+            "actualOutput": "[0, 0, 0, 0]",
+            "isHidden": true,
+            "executionTimeMs": 1
+          }
+        ],
+        "passedCount": 1,
+        "totalCount": 5,
+        "earnedMarks": 3
+      },
+      "binary-search": {
+        "problemId": "binary-search",
+        "language": "java",
+        "compiled": true,
+        "compilationError": "",
+        "testResults": [
+          {
+            "testCaseId": "bs-v1",
+            "passed": false,
+            "input": "arr=[1,3,5,7,9,11], target=7",
+            "expectedOutput": "3",
+            "actualOutput": "-1",
+            "isHidden": false,
+            "executionTimeMs": 2
+          },
+          {
+            "testCaseId": "bs-v2",
+            "passed": true,
+            "input": "arr=[2,4,6,8], target=5",
+            "expectedOutput": "-1",
+            "actualOutput": "-1",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "bs-v3",
+            "passed": false,
+            "input": "arr=[10], target=10",
+            "expectedOutput": "0",
+            "actualOutput": "-1",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "bs-h1",
+            "passed": true,
+            "input": "arr=[], target=1",
+            "expectedOutput": "-1",
+            "actualOutput": "-1",
+            "isHidden": true,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "bs-h2",
+            "passed": false,
+            "input": "arr=[1,2,3,4,5], target=1",
+            "expectedOutput": "0",
+            "actualOutput": "-1",
+            "isHidden": true,
+            "executionTimeMs": 1
+          }
+        ],
+        "passedCount": 2,
+        "totalCount": 5,
+        "earnedMarks": 6
+      },
+      "matrix-multiplication": {
+        "problemId": "matrix-multiplication",
+        "language": "java",
+        "compiled": false,
+        "compilationError": "Compilation Error: int is not defined",
+        "testResults": [
+          {
+            "testCaseId": "mm-v1",
+            "passed": false,
+            "input": "A=[[1,2],[3,4]], B=[[5,6],[7,8]]",
+            "expectedOutput": "[[19, 22], [43, 50]]",
+            "actualOutput": "",
+            "error": "Compilation Error: int is not defined",
+            "isHidden": false,
+            "executionTimeMs": 2
+          },
+          {
+            "testCaseId": "mm-v2",
+            "passed": false,
+            "input": "A=[[1,0],[0,1]], B=[[2,3],[4,5]]",
+            "expectedOutput": "[[2, 3], [4, 5]]",
+            "actualOutput": "",
+            "error": "Compilation Error: int is not defined",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "mm-v3",
+            "passed": false,
+            "input": "A=[[1,2,3]], B=[[1],[1],[1]]",
+            "expectedOutput": "[[6]]",
+            "actualOutput": "",
+            "error": "Compilation Error: int is not defined",
+            "isHidden": false,
+            "executionTimeMs": 2
+          },
+          {
+            "testCaseId": "mm-h1",
+            "passed": false,
+            "input": "A=[[2]], B=[[3]]",
+            "expectedOutput": "[[6]]",
+            "actualOutput": "",
+            "error": "Compilation Error: int is not defined",
+            "isHidden": true,
+            "executionTimeMs": 4
+          },
+          {
+            "testCaseId": "mm-h2",
+            "passed": false,
+            "input": "A=[[1,1],[1,1]], B=[[1,1],[1,1]]",
+            "expectedOutput": "[[2, 2], [2, 2]]",
+            "actualOutput": "",
+            "error": "Compilation Error: int is not defined",
+            "isHidden": true,
+            "executionTimeMs": 2
+          }
+        ],
+        "passedCount": 0,
+        "totalCount": 5,
+        "earnedMarks": 0
+      }
+    }
+  },
+  {
+    "id": "j40whxlh0",
+    "sessionId": "test_sess_4",
+    "rollNo": "2023-CC-14",
+    "name": "Test Candidate 4",
+    "mergeSortMarks": 3,
+    "binarySearchMarks": 6,
+    "matrixMultMarks": 0,
+    "totalScore": 9,
+    "timeTaken": "05:00",
+    "violations": 0,
+    "submittedAt": "2026-08-03T16:25:03.432Z",
+    "code": {
+      "merge-sorted-array": "public class Solution { public static void merge(int[] nums1, int m, int[] nums2, int n) {} }",
+      "binary-search": "public class Solution { public static int binarySearch(int[] arr, int target) { return -1; } }",
+      "matrix-multiplication": "public class Solution { public static int[][] multiply(int[][] A, int[][] B) { return new int[0][0]; } }"
+    },
+    "testBreakdown": {
+      "merge-sorted-array": {
+        "problemId": "merge-sorted-array",
+        "language": "java",
+        "compiled": true,
+        "compilationError": "",
+        "testResults": [
+          {
+            "testCaseId": "msa-v1",
+            "passed": false,
+            "input": "nums1=[1,2,3,0,0,0], m=3, nums2=[2,5,6], n=3",
+            "expectedOutput": "[1, 2, 2, 3, 5, 6]",
+            "actualOutput": "[1, 2, 3, 0, 0, 0]",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "msa-v2",
+            "passed": true,
+            "input": "nums1=[1], m=1, nums2=[], n=0",
+            "expectedOutput": "[1]",
+            "actualOutput": "[1]",
+            "isHidden": false,
+            "executionTimeMs": 2
+          },
+          {
+            "testCaseId": "msa-v3",
+            "passed": false,
+            "input": "nums1=[0], m=0, nums2=[1], n=1",
+            "expectedOutput": "[1]",
+            "actualOutput": "[0]",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "msa-h1",
+            "passed": false,
+            "input": "nums1=[4,5,6,0,0,0], m=3, nums2=[1,2,3], n=3",
+            "expectedOutput": "[1, 2, 3, 4, 5, 6]",
+            "actualOutput": "[4, 5, 6, 0, 0, 0]",
+            "isHidden": true,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "msa-h2",
+            "passed": false,
+            "input": "nums1=[0,0,0,0], m=0, nums2=[1,2,3,4], n=4",
+            "expectedOutput": "[1, 2, 3, 4]",
+            "actualOutput": "[0, 0, 0, 0]",
+            "isHidden": true,
+            "executionTimeMs": 1
+          }
+        ],
+        "passedCount": 1,
+        "totalCount": 5,
+        "earnedMarks": 3
+      },
+      "binary-search": {
+        "problemId": "binary-search",
+        "language": "java",
+        "compiled": true,
+        "compilationError": "",
+        "testResults": [
+          {
+            "testCaseId": "bs-v1",
+            "passed": false,
+            "input": "arr=[1,3,5,7,9,11], target=7",
+            "expectedOutput": "3",
+            "actualOutput": "-1",
+            "isHidden": false,
+            "executionTimeMs": 0
+          },
+          {
+            "testCaseId": "bs-v2",
+            "passed": true,
+            "input": "arr=[2,4,6,8], target=5",
+            "expectedOutput": "-1",
+            "actualOutput": "-1",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "bs-v3",
+            "passed": false,
+            "input": "arr=[10], target=10",
+            "expectedOutput": "0",
+            "actualOutput": "-1",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "bs-h1",
+            "passed": true,
+            "input": "arr=[], target=1",
+            "expectedOutput": "-1",
+            "actualOutput": "-1",
+            "isHidden": true,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "bs-h2",
+            "passed": false,
+            "input": "arr=[1,2,3,4,5], target=1",
+            "expectedOutput": "0",
+            "actualOutput": "-1",
+            "isHidden": true,
+            "executionTimeMs": 1
+          }
+        ],
+        "passedCount": 2,
+        "totalCount": 5,
+        "earnedMarks": 6
+      },
+      "matrix-multiplication": {
+        "problemId": "matrix-multiplication",
+        "language": "java",
+        "compiled": false,
+        "compilationError": "Compilation Error: int is not defined",
+        "testResults": [
+          {
+            "testCaseId": "mm-v1",
+            "passed": false,
+            "input": "A=[[1,2],[3,4]], B=[[5,6],[7,8]]",
+            "expectedOutput": "[[19, 22], [43, 50]]",
+            "actualOutput": "",
+            "error": "Compilation Error: int is not defined",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "mm-v2",
+            "passed": false,
+            "input": "A=[[1,0],[0,1]], B=[[2,3],[4,5]]",
+            "expectedOutput": "[[2, 3], [4, 5]]",
+            "actualOutput": "",
+            "error": "Compilation Error: int is not defined",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "mm-v3",
+            "passed": false,
+            "input": "A=[[1,2,3]], B=[[1],[1],[1]]",
+            "expectedOutput": "[[6]]",
+            "actualOutput": "",
+            "error": "Compilation Error: int is not defined",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "mm-h1",
+            "passed": false,
+            "input": "A=[[2]], B=[[3]]",
+            "expectedOutput": "[[6]]",
+            "actualOutput": "",
+            "error": "Compilation Error: int is not defined",
+            "isHidden": true,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "mm-h2",
+            "passed": false,
+            "input": "A=[[1,1],[1,1]], B=[[1,1],[1,1]]",
+            "expectedOutput": "[[2, 2], [2, 2]]",
+            "actualOutput": "",
+            "error": "Compilation Error: int is not defined",
+            "isHidden": true,
+            "executionTimeMs": 1
+          }
+        ],
+        "passedCount": 0,
+        "totalCount": 5,
+        "earnedMarks": 0
+      }
+    }
+  },
+  {
+    "id": "408mm9tvz",
+    "sessionId": "test_sess_5",
+    "rollNo": "2023-CC-15",
+    "name": "Test Candidate 5",
+    "mergeSortMarks": 3,
+    "binarySearchMarks": 6,
+    "matrixMultMarks": 0,
+    "totalScore": 9,
+    "timeTaken": "05:00",
+    "violations": 0,
+    "submittedAt": "2026-08-03T16:25:19.678Z",
+    "code": {
+      "merge-sorted-array": "public class Solution { public static void merge(int[] nums1, int m, int[] nums2, int n) {} }",
+      "binary-search": "public class Solution { public static int binarySearch(int[] arr, int target) { return -1; } }",
+      "matrix-multiplication": "public class Solution { public void multiply(int[][] A, int[][] B) {} }"
+    },
+    "testBreakdown": {
+      "merge-sorted-array": {
+        "problemId": "merge-sorted-array",
+        "language": "java",
+        "compiled": true,
+        "compilationError": "",
+        "testResults": [
+          {
+            "testCaseId": "msa-v1",
+            "passed": false,
+            "input": "nums1=[1,2,3,0,0,0], m=3, nums2=[2,5,6], n=3",
+            "expectedOutput": "[1, 2, 2, 3, 5, 6]",
+            "actualOutput": "[1, 2, 3, 0, 0, 0]",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "msa-v2",
+            "passed": true,
+            "input": "nums1=[1], m=1, nums2=[], n=0",
+            "expectedOutput": "[1]",
+            "actualOutput": "[1]",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "msa-v3",
+            "passed": false,
+            "input": "nums1=[0], m=0, nums2=[1], n=1",
+            "expectedOutput": "[1]",
+            "actualOutput": "[0]",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "msa-h1",
+            "passed": false,
+            "input": "nums1=[4,5,6,0,0,0], m=3, nums2=[1,2,3], n=3",
+            "expectedOutput": "[1, 2, 3, 4, 5, 6]",
+            "actualOutput": "[4, 5, 6, 0, 0, 0]",
+            "isHidden": true,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "msa-h2",
+            "passed": false,
+            "input": "nums1=[0,0,0,0], m=0, nums2=[1,2,3,4], n=4",
+            "expectedOutput": "[1, 2, 3, 4]",
+            "actualOutput": "[0, 0, 0, 0]",
+            "isHidden": true,
+            "executionTimeMs": 1
+          }
+        ],
+        "passedCount": 1,
+        "totalCount": 5,
+        "earnedMarks": 3
+      },
+      "binary-search": {
+        "problemId": "binary-search",
+        "language": "java",
+        "compiled": true,
+        "compilationError": "",
+        "testResults": [
+          {
+            "testCaseId": "bs-v1",
+            "passed": false,
+            "input": "arr=[1,3,5,7,9,11], target=7",
+            "expectedOutput": "3",
+            "actualOutput": "-1",
+            "isHidden": false,
+            "executionTimeMs": 0
+          },
+          {
+            "testCaseId": "bs-v2",
+            "passed": true,
+            "input": "arr=[2,4,6,8], target=5",
+            "expectedOutput": "-1",
+            "actualOutput": "-1",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "bs-v3",
+            "passed": false,
+            "input": "arr=[10], target=10",
+            "expectedOutput": "0",
+            "actualOutput": "-1",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "bs-h1",
+            "passed": true,
+            "input": "arr=[], target=1",
+            "expectedOutput": "-1",
+            "actualOutput": "-1",
+            "isHidden": true,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "bs-h2",
+            "passed": false,
+            "input": "arr=[1,2,3,4,5], target=1",
+            "expectedOutput": "0",
+            "actualOutput": "-1",
+            "isHidden": true,
+            "executionTimeMs": 0
+          }
+        ],
+        "passedCount": 2,
+        "totalCount": 5,
+        "earnedMarks": 6
+      },
+      "matrix-multiplication": {
+        "problemId": "matrix-multiplication",
+        "language": "java",
+        "compiled": false,
+        "compilationError": "Compilation Error: Unexpected token 'void'",
+        "testResults": [
+          {
+            "testCaseId": "mm-v1",
+            "passed": false,
+            "input": "A=[[1,2],[3,4]], B=[[5,6],[7,8]]",
+            "expectedOutput": "[[19, 22], [43, 50]]",
+            "actualOutput": "",
+            "error": "Compilation Error: Unexpected token 'void'",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "mm-v2",
+            "passed": false,
+            "input": "A=[[1,0],[0,1]], B=[[2,3],[4,5]]",
+            "expectedOutput": "[[2, 3], [4, 5]]",
+            "actualOutput": "",
+            "error": "Compilation Error: Unexpected token 'void'",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "mm-v3",
+            "passed": false,
+            "input": "A=[[1,2,3]], B=[[1],[1],[1]]",
+            "expectedOutput": "[[6]]",
+            "actualOutput": "",
+            "error": "Compilation Error: Unexpected token 'void'",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "mm-h1",
+            "passed": false,
+            "input": "A=[[2]], B=[[3]]",
+            "expectedOutput": "[[6]]",
+            "actualOutput": "",
+            "error": "Compilation Error: Unexpected token 'void'",
+            "isHidden": true,
+            "executionTimeMs": 0
+          },
+          {
+            "testCaseId": "mm-h2",
+            "passed": false,
+            "input": "A=[[1,1],[1,1]], B=[[1,1],[1,1]]",
+            "expectedOutput": "[[2, 2], [2, 2]]",
+            "actualOutput": "",
+            "error": "Compilation Error: Unexpected token 'void'",
+            "isHidden": true,
+            "executionTimeMs": 1
+          }
+        ],
+        "passedCount": 0,
+        "totalCount": 5,
+        "earnedMarks": 0
+      }
+    }
+  },
+  {
+    "id": "2xdlquk4q",
+    "sessionId": "test_sess_6",
+    "rollNo": "2023-CC-16",
+    "name": "Test Candidate 6",
+    "mergeSortMarks": 3,
+    "binarySearchMarks": 6,
+    "matrixMultMarks": 0,
+    "totalScore": 9,
+    "timeTaken": "05:00",
+    "violations": 0,
+    "submittedAt": "2026-08-03T16:25:24.597Z",
+    "code": {
+      "merge-sorted-array": "public class Solution { public static void merge(int[] nums1, int m, int[] nums2, int n) {} }",
+      "binary-search": "public class Solution { public static int binarySearch(int[] arr, int target) { return -1; } }",
+      "matrix-multiplication": "public class Solution { public int[][] multiply(int[][] A, int[][] B) { return new int[][]{{19,22},{43,50}}; } }"
+    },
+    "testBreakdown": {
+      "merge-sorted-array": {
+        "problemId": "merge-sorted-array",
+        "language": "java",
+        "compiled": true,
+        "compilationError": "",
+        "testResults": [
+          {
+            "testCaseId": "msa-v1",
+            "passed": false,
+            "input": "nums1=[1,2,3,0,0,0], m=3, nums2=[2,5,6], n=3",
+            "expectedOutput": "[1, 2, 2, 3, 5, 6]",
+            "actualOutput": "[1, 2, 3, 0, 0, 0]",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "msa-v2",
+            "passed": true,
+            "input": "nums1=[1], m=1, nums2=[], n=0",
+            "expectedOutput": "[1]",
+            "actualOutput": "[1]",
+            "isHidden": false,
+            "executionTimeMs": 0
+          },
+          {
+            "testCaseId": "msa-v3",
+            "passed": false,
+            "input": "nums1=[0], m=0, nums2=[1], n=1",
+            "expectedOutput": "[1]",
+            "actualOutput": "[0]",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "msa-h1",
+            "passed": false,
+            "input": "nums1=[4,5,6,0,0,0], m=3, nums2=[1,2,3], n=3",
+            "expectedOutput": "[1, 2, 3, 4, 5, 6]",
+            "actualOutput": "[4, 5, 6, 0, 0, 0]",
+            "isHidden": true,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "msa-h2",
+            "passed": false,
+            "input": "nums1=[0,0,0,0], m=0, nums2=[1,2,3,4], n=4",
+            "expectedOutput": "[1, 2, 3, 4]",
+            "actualOutput": "[0, 0, 0, 0]",
+            "isHidden": true,
+            "executionTimeMs": 1
+          }
+        ],
+        "passedCount": 1,
+        "totalCount": 5,
+        "earnedMarks": 3
+      },
+      "binary-search": {
+        "problemId": "binary-search",
+        "language": "java",
+        "compiled": true,
+        "compilationError": "",
+        "testResults": [
+          {
+            "testCaseId": "bs-v1",
+            "passed": false,
+            "input": "arr=[1,3,5,7,9,11], target=7",
+            "expectedOutput": "3",
+            "actualOutput": "-1",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "bs-v2",
+            "passed": true,
+            "input": "arr=[2,4,6,8], target=5",
+            "expectedOutput": "-1",
+            "actualOutput": "-1",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "bs-v3",
+            "passed": false,
+            "input": "arr=[10], target=10",
+            "expectedOutput": "0",
+            "actualOutput": "-1",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "bs-h1",
+            "passed": true,
+            "input": "arr=[], target=1",
+            "expectedOutput": "-1",
+            "actualOutput": "-1",
+            "isHidden": true,
+            "executionTimeMs": 0
+          },
+          {
+            "testCaseId": "bs-h2",
+            "passed": false,
+            "input": "arr=[1,2,3,4,5], target=1",
+            "expectedOutput": "0",
+            "actualOutput": "-1",
+            "isHidden": true,
+            "executionTimeMs": 1
+          }
+        ],
+        "passedCount": 2,
+        "totalCount": 5,
+        "earnedMarks": 6
+      },
+      "matrix-multiplication": {
+        "problemId": "matrix-multiplication",
+        "language": "java",
+        "compiled": true,
+        "compilationError": "",
+        "testResults": [
+          {
+            "testCaseId": "mm-v1",
+            "passed": false,
+            "input": "A=[[1,2],[3,4]], B=[[5,6],[7,8]]",
+            "expectedOutput": "[[19, 22], [43, 50]]",
+            "actualOutput": "",
+            "error": "Runtime Error: Unexpected identifier 'int'",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "mm-v2",
+            "passed": false,
+            "input": "A=[[1,0],[0,1]], B=[[2,3],[4,5]]",
+            "expectedOutput": "[[2, 3], [4, 5]]",
+            "actualOutput": "",
+            "error": "Runtime Error: Unexpected identifier 'int'",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "mm-v3",
+            "passed": false,
+            "input": "A=[[1,2,3]], B=[[1],[1],[1]]",
+            "expectedOutput": "[[6]]",
+            "actualOutput": "",
+            "error": "Runtime Error: Unexpected identifier 'int'",
+            "isHidden": false,
+            "executionTimeMs": 0
+          },
+          {
+            "testCaseId": "mm-h1",
+            "passed": false,
+            "input": "A=[[2]], B=[[3]]",
+            "expectedOutput": "[[6]]",
+            "actualOutput": "",
+            "error": "Runtime Error: Unexpected identifier 'int'",
+            "isHidden": true,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "mm-h2",
+            "passed": false,
+            "input": "A=[[1,1],[1,1]], B=[[1,1],[1,1]]",
+            "expectedOutput": "[[2, 2], [2, 2]]",
+            "actualOutput": "",
+            "error": "Runtime Error: Unexpected identifier 'int'",
+            "isHidden": true,
+            "executionTimeMs": 0
+          }
+        ],
+        "passedCount": 0,
+        "totalCount": 5,
+        "earnedMarks": 0
+      }
+    }
+  },
+  {
+    "id": "b880ipah7",
+    "sessionId": "test_sess_7",
+    "rollNo": "2023-CC-17",
+    "name": "Test Candidate 7",
+    "mergeSortMarks": 3,
+    "binarySearchMarks": 6,
+    "matrixMultMarks": 0,
+    "totalScore": 9,
+    "timeTaken": "05:00",
+    "violations": 0,
+    "submittedAt": "2026-08-03T16:26:08.379Z",
+    "code": {
+      "merge-sorted-array": "public class Solution { public static void merge(int[] nums1, int m, int[] nums2, int n) {} }",
+      "binary-search": "public class Solution { public static int binarySearch(int[] arr, int target) { return -1; } }",
+      "matrix-multiplication": "public class Solution { public int[][] multiply(int[][] A, int[][] B) { return new int[][]{{19,22},{43,50}}; } }"
+    },
+    "testBreakdown": {
+      "merge-sorted-array": {
+        "problemId": "merge-sorted-array",
+        "language": "java",
+        "compiled": true,
+        "compilationError": "",
+        "testResults": [
+          {
+            "testCaseId": "msa-v1",
+            "passed": false,
+            "input": "nums1=[1,2,3,0,0,0], m=3, nums2=[2,5,6], n=3",
+            "expectedOutput": "[1, 2, 2, 3, 5, 6]",
+            "actualOutput": "[1, 2, 3, 0, 0, 0]",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "msa-v2",
+            "passed": true,
+            "input": "nums1=[1], m=1, nums2=[], n=0",
+            "expectedOutput": "[1]",
+            "actualOutput": "[1]",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "msa-v3",
+            "passed": false,
+            "input": "nums1=[0], m=0, nums2=[1], n=1",
+            "expectedOutput": "[1]",
+            "actualOutput": "[0]",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "msa-h1",
+            "passed": false,
+            "input": "nums1=[4,5,6,0,0,0], m=3, nums2=[1,2,3], n=3",
+            "expectedOutput": "[1, 2, 3, 4, 5, 6]",
+            "actualOutput": "[4, 5, 6, 0, 0, 0]",
+            "isHidden": true,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "msa-h2",
+            "passed": false,
+            "input": "nums1=[0,0,0,0], m=0, nums2=[1,2,3,4], n=4",
+            "expectedOutput": "[1, 2, 3, 4]",
+            "actualOutput": "[0, 0, 0, 0]",
+            "isHidden": true,
+            "executionTimeMs": 1
+          }
+        ],
+        "passedCount": 1,
+        "totalCount": 5,
+        "earnedMarks": 3
+      },
+      "binary-search": {
+        "problemId": "binary-search",
+        "language": "java",
+        "compiled": true,
+        "compilationError": "",
+        "testResults": [
+          {
+            "testCaseId": "bs-v1",
+            "passed": false,
+            "input": "arr=[1,3,5,7,9,11], target=7",
+            "expectedOutput": "3",
+            "actualOutput": "-1",
+            "isHidden": false,
+            "executionTimeMs": 0
+          },
+          {
+            "testCaseId": "bs-v2",
+            "passed": true,
+            "input": "arr=[2,4,6,8], target=5",
+            "expectedOutput": "-1",
+            "actualOutput": "-1",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "bs-v3",
+            "passed": false,
+            "input": "arr=[10], target=10",
+            "expectedOutput": "0",
+            "actualOutput": "-1",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "bs-h1",
+            "passed": true,
+            "input": "arr=[], target=1",
+            "expectedOutput": "-1",
+            "actualOutput": "-1",
+            "isHidden": true,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "bs-h2",
+            "passed": false,
+            "input": "arr=[1,2,3,4,5], target=1",
+            "expectedOutput": "0",
+            "actualOutput": "-1",
+            "isHidden": true,
+            "executionTimeMs": 1
+          }
+        ],
+        "passedCount": 2,
+        "totalCount": 5,
+        "earnedMarks": 6
+      },
+      "matrix-multiplication": {
+        "problemId": "matrix-multiplication",
+        "language": "java",
+        "compiled": true,
+        "compilationError": "",
+        "testResults": [
+          {
+            "testCaseId": "mm-v1",
+            "passed": false,
+            "input": "A=[[1,2],[3,4]], B=[[5,6],[7,8]]",
+            "expectedOutput": "[[19, 22], [43, 50]]",
+            "actualOutput": "",
+            "error": "Runtime Error: Unexpected identifier 'int'",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "mm-v2",
+            "passed": false,
+            "input": "A=[[1,0],[0,1]], B=[[2,3],[4,5]]",
+            "expectedOutput": "[[2, 3], [4, 5]]",
+            "actualOutput": "",
+            "error": "Runtime Error: Unexpected identifier 'int'",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "mm-v3",
+            "passed": false,
+            "input": "A=[[1,2,3]], B=[[1],[1],[1]]",
+            "expectedOutput": "[[6]]",
+            "actualOutput": "",
+            "error": "Runtime Error: Unexpected identifier 'int'",
+            "isHidden": false,
+            "executionTimeMs": 0
+          },
+          {
+            "testCaseId": "mm-h1",
+            "passed": false,
+            "input": "A=[[2]], B=[[3]]",
+            "expectedOutput": "[[6]]",
+            "actualOutput": "",
+            "error": "Runtime Error: Unexpected identifier 'int'",
+            "isHidden": true,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "mm-h2",
+            "passed": false,
+            "input": "A=[[1,1],[1,1]], B=[[1,1],[1,1]]",
+            "expectedOutput": "[[2, 2], [2, 2]]",
+            "actualOutput": "",
+            "error": "Runtime Error: Unexpected identifier 'int'",
+            "isHidden": true,
+            "executionTimeMs": 1
+          }
+        ],
+        "passedCount": 0,
+        "totalCount": 5,
+        "earnedMarks": 0
+      }
+    }
+  },
+  {
+    "id": "vbkybmscd",
+    "sessionId": "test_sess_8",
+    "rollNo": "2023-CC-18",
+    "name": "Test Candidate 8",
+    "mergeSortMarks": 3,
+    "binarySearchMarks": 6,
+    "matrixMultMarks": 0,
+    "totalScore": 9,
+    "timeTaken": "05:00",
+    "violations": 0,
+    "submittedAt": "2026-08-03T16:26:53.434Z",
+    "code": {
+      "merge-sorted-array": "public class Solution { public static void merge(int[] nums1, int m, int[] nums2, int n) {} }",
+      "binary-search": "public class Solution { public static int binarySearch(int[] arr, int target) { return -1; } }",
+      "matrix-multiplication": "public class Solution { public int[][] multiply(int[][] A, int[][] B) { return new int[][]{{19,22},{43,50}}; } }"
+    },
+    "testBreakdown": {
+      "merge-sorted-array": {
+        "problemId": "merge-sorted-array",
+        "language": "java",
+        "compiled": true,
+        "compilationError": "",
+        "testResults": [
+          {
+            "testCaseId": "msa-v1",
+            "passed": false,
+            "input": "nums1=[1,2,3,0,0,0], m=3, nums2=[2,5,6], n=3",
+            "expectedOutput": "[1, 2, 2, 3, 5, 6]",
+            "actualOutput": "[1, 2, 3, 0, 0, 0]",
+            "isHidden": false,
+            "executionTimeMs": 2
+          },
+          {
+            "testCaseId": "msa-v2",
+            "passed": true,
+            "input": "nums1=[1], m=1, nums2=[], n=0",
+            "expectedOutput": "[1]",
+            "actualOutput": "[1]",
+            "isHidden": false,
+            "executionTimeMs": 0
+          },
+          {
+            "testCaseId": "msa-v3",
+            "passed": false,
+            "input": "nums1=[0], m=0, nums2=[1], n=1",
+            "expectedOutput": "[1]",
+            "actualOutput": "[0]",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "msa-h1",
+            "passed": false,
+            "input": "nums1=[4,5,6,0,0,0], m=3, nums2=[1,2,3], n=3",
+            "expectedOutput": "[1, 2, 3, 4, 5, 6]",
+            "actualOutput": "[4, 5, 6, 0, 0, 0]",
+            "isHidden": true,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "msa-h2",
+            "passed": false,
+            "input": "nums1=[0,0,0,0], m=0, nums2=[1,2,3,4], n=4",
+            "expectedOutput": "[1, 2, 3, 4]",
+            "actualOutput": "[0, 0, 0, 0]",
+            "isHidden": true,
+            "executionTimeMs": 1
+          }
+        ],
+        "passedCount": 1,
+        "totalCount": 5,
+        "earnedMarks": 3
+      },
+      "binary-search": {
+        "problemId": "binary-search",
+        "language": "java",
+        "compiled": true,
+        "compilationError": "",
+        "testResults": [
+          {
+            "testCaseId": "bs-v1",
+            "passed": false,
+            "input": "arr=[1,3,5,7,9,11], target=7",
+            "expectedOutput": "3",
+            "actualOutput": "-1",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "bs-v2",
+            "passed": true,
+            "input": "arr=[2,4,6,8], target=5",
+            "expectedOutput": "-1",
+            "actualOutput": "-1",
+            "isHidden": false,
+            "executionTimeMs": 0
+          },
+          {
+            "testCaseId": "bs-v3",
+            "passed": false,
+            "input": "arr=[10], target=10",
+            "expectedOutput": "0",
+            "actualOutput": "-1",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "bs-h1",
+            "passed": true,
+            "input": "arr=[], target=1",
+            "expectedOutput": "-1",
+            "actualOutput": "-1",
+            "isHidden": true,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "bs-h2",
+            "passed": false,
+            "input": "arr=[1,2,3,4,5], target=1",
+            "expectedOutput": "0",
+            "actualOutput": "-1",
+            "isHidden": true,
+            "executionTimeMs": 1
+          }
+        ],
+        "passedCount": 2,
+        "totalCount": 5,
+        "earnedMarks": 6
+      },
+      "matrix-multiplication": {
+        "problemId": "matrix-multiplication",
+        "language": "java",
+        "compiled": true,
+        "compilationError": "",
+        "testResults": [
+          {
+            "testCaseId": "mm-v1",
+            "passed": false,
+            "input": "A=[[1,2],[3,4]], B=[[5,6],[7,8]]",
+            "expectedOutput": "[[19, 22], [43, 50]]",
+            "actualOutput": "",
+            "error": "Runtime Error: Unexpected identifier 'int'",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "mm-v2",
+            "passed": false,
+            "input": "A=[[1,0],[0,1]], B=[[2,3],[4,5]]",
+            "expectedOutput": "[[2, 3], [4, 5]]",
+            "actualOutput": "",
+            "error": "Runtime Error: Unexpected identifier 'int'",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "mm-v3",
+            "passed": false,
+            "input": "A=[[1,2,3]], B=[[1],[1],[1]]",
+            "expectedOutput": "[[6]]",
+            "actualOutput": "",
+            "error": "Runtime Error: Unexpected identifier 'int'",
+            "isHidden": false,
+            "executionTimeMs": 0
+          },
+          {
+            "testCaseId": "mm-h1",
+            "passed": false,
+            "input": "A=[[2]], B=[[3]]",
+            "expectedOutput": "[[6]]",
+            "actualOutput": "",
+            "error": "Runtime Error: Unexpected identifier 'int'",
+            "isHidden": true,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "mm-h2",
+            "passed": false,
+            "input": "A=[[1,1],[1,1]], B=[[1,1],[1,1]]",
+            "expectedOutput": "[[2, 2], [2, 2]]",
+            "actualOutput": "",
+            "error": "Runtime Error: Unexpected identifier 'int'",
+            "isHidden": true,
+            "executionTimeMs": 2
+          }
+        ],
+        "passedCount": 0,
+        "totalCount": 5,
+        "earnedMarks": 0
+      }
+    }
+  },
+  {
+    "id": "qtikcxeyh",
+    "sessionId": "test_sess_9",
+    "rollNo": "2023-CC-19",
+    "name": "Test Candidate 9",
+    "mergeSortMarks": 3,
+    "binarySearchMarks": 6,
+    "matrixMultMarks": 0,
+    "totalScore": 9,
+    "timeTaken": "05:00",
+    "violations": 0,
+    "submittedAt": "2026-08-03T16:27:21.157Z",
+    "code": {
+      "merge-sorted-array": "public class Solution { public static void merge(int[] nums1, int m, int[] nums2, int n) {} }",
+      "binary-search": "public class Solution { public static int binarySearch(int[] arr, int target) { return -1; } }",
+      "matrix-multiplication": "public class Solution { public int[][] multiply(int[][] A, int[][] B) { return new int[][]{{19,22},{43,50}}; } }"
+    },
+    "testBreakdown": {
+      "merge-sorted-array": {
+        "problemId": "merge-sorted-array",
+        "language": "java",
+        "compiled": true,
+        "compilationError": "",
+        "testResults": [
+          {
+            "testCaseId": "msa-v1",
+            "passed": false,
+            "input": "nums1=[1,2,3,0,0,0], m=3, nums2=[2,5,6], n=3",
+            "expectedOutput": "[1, 2, 2, 3, 5, 6]",
+            "actualOutput": "[1, 2, 3, 0, 0, 0]",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "msa-v2",
+            "passed": true,
+            "input": "nums1=[1], m=1, nums2=[], n=0",
+            "expectedOutput": "[1]",
+            "actualOutput": "[1]",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "msa-v3",
+            "passed": false,
+            "input": "nums1=[0], m=0, nums2=[1], n=1",
+            "expectedOutput": "[1]",
+            "actualOutput": "[0]",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "msa-h1",
+            "passed": false,
+            "input": "nums1=[4,5,6,0,0,0], m=3, nums2=[1,2,3], n=3",
+            "expectedOutput": "[1, 2, 3, 4, 5, 6]",
+            "actualOutput": "[4, 5, 6, 0, 0, 0]",
+            "isHidden": true,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "msa-h2",
+            "passed": false,
+            "input": "nums1=[0,0,0,0], m=0, nums2=[1,2,3,4], n=4",
+            "expectedOutput": "[1, 2, 3, 4]",
+            "actualOutput": "[0, 0, 0, 0]",
+            "isHidden": true,
+            "executionTimeMs": 1
+          }
+        ],
+        "passedCount": 1,
+        "totalCount": 5,
+        "earnedMarks": 3
+      },
+      "binary-search": {
+        "problemId": "binary-search",
+        "language": "java",
+        "compiled": true,
+        "compilationError": "",
+        "testResults": [
+          {
+            "testCaseId": "bs-v1",
+            "passed": false,
+            "input": "arr=[1,3,5,7,9,11], target=7",
+            "expectedOutput": "3",
+            "actualOutput": "-1",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "bs-v2",
+            "passed": true,
+            "input": "arr=[2,4,6,8], target=5",
+            "expectedOutput": "-1",
+            "actualOutput": "-1",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "bs-v3",
+            "passed": false,
+            "input": "arr=[10], target=10",
+            "expectedOutput": "0",
+            "actualOutput": "-1",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "bs-h1",
+            "passed": true,
+            "input": "arr=[], target=1",
+            "expectedOutput": "-1",
+            "actualOutput": "-1",
+            "isHidden": true,
+            "executionTimeMs": 2
+          },
+          {
+            "testCaseId": "bs-h2",
+            "passed": false,
+            "input": "arr=[1,2,3,4,5], target=1",
+            "expectedOutput": "0",
+            "actualOutput": "-1",
+            "isHidden": true,
+            "executionTimeMs": 1
+          }
+        ],
+        "passedCount": 2,
+        "totalCount": 5,
+        "earnedMarks": 6
+      },
+      "matrix-multiplication": {
+        "problemId": "matrix-multiplication",
+        "language": "java",
+        "compiled": true,
+        "compilationError": "",
+        "testResults": [
+          {
+            "testCaseId": "mm-v1",
+            "passed": false,
+            "input": "A=[[1,2],[3,4]], B=[[5,6],[7,8]]",
+            "expectedOutput": "[[19, 22], [43, 50]]",
+            "actualOutput": "",
+            "error": "Runtime Error: Unexpected identifier 'int'",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "mm-v2",
+            "passed": false,
+            "input": "A=[[1,0],[0,1]], B=[[2,3],[4,5]]",
+            "expectedOutput": "[[2, 3], [4, 5]]",
+            "actualOutput": "",
+            "error": "Runtime Error: Unexpected identifier 'int'",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "mm-v3",
+            "passed": false,
+            "input": "A=[[1,2,3]], B=[[1],[1],[1]]",
+            "expectedOutput": "[[6]]",
+            "actualOutput": "",
+            "error": "Runtime Error: Unexpected identifier 'int'",
+            "isHidden": false,
+            "executionTimeMs": 0
+          },
+          {
+            "testCaseId": "mm-h1",
+            "passed": false,
+            "input": "A=[[2]], B=[[3]]",
+            "expectedOutput": "[[6]]",
+            "actualOutput": "",
+            "error": "Runtime Error: Unexpected identifier 'int'",
+            "isHidden": true,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "mm-h2",
+            "passed": false,
+            "input": "A=[[1,1],[1,1]], B=[[1,1],[1,1]]",
+            "expectedOutput": "[[2, 2], [2, 2]]",
+            "actualOutput": "",
+            "error": "Runtime Error: Unexpected identifier 'int'",
+            "isHidden": true,
+            "executionTimeMs": 1
+          }
+        ],
+        "passedCount": 0,
+        "totalCount": 5,
+        "earnedMarks": 0
+      }
+    }
+  },
+  {
+    "id": "1ig99yt7r",
+    "sessionId": "test_sess_10",
+    "rollNo": "2023-CC-20",
+    "name": "Test Candidate 10",
+    "mergeSortMarks": 3,
+    "binarySearchMarks": 6,
+    "matrixMultMarks": 0,
+    "totalScore": 9,
+    "timeTaken": "05:00",
+    "violations": 0,
+    "submittedAt": "2026-08-03T16:27:56.958Z",
+    "code": {
+      "merge-sorted-array": "public class Solution { public static void merge(int[] nums1, int m, int[] nums2, int n) {} }",
+      "binary-search": "public class Solution { public static int binarySearch(int[] arr, int target) { return -1; } }",
+      "matrix-multiplication": "public class Solution { public int[][] multiply(int[][] A, int[][] B) { return new int[][]{{19,22},{43,50}}; } }"
+    },
+    "testBreakdown": {
+      "merge-sorted-array": {
+        "problemId": "merge-sorted-array",
+        "language": "java",
+        "compiled": true,
+        "compilationError": "",
+        "testResults": [
+          {
+            "testCaseId": "msa-v1",
+            "passed": false,
+            "input": "nums1=[1,2,3,0,0,0], m=3, nums2=[2,5,6], n=3",
+            "expectedOutput": "[1, 2, 2, 3, 5, 6]",
+            "actualOutput": "[1, 2, 3, 0, 0, 0]",
+            "isHidden": false,
+            "executionTimeMs": 2
+          },
+          {
+            "testCaseId": "msa-v2",
+            "passed": true,
+            "input": "nums1=[1], m=1, nums2=[], n=0",
+            "expectedOutput": "[1]",
+            "actualOutput": "[1]",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "msa-v3",
+            "passed": false,
+            "input": "nums1=[0], m=0, nums2=[1], n=1",
+            "expectedOutput": "[1]",
+            "actualOutput": "[0]",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "msa-h1",
+            "passed": false,
+            "input": "nums1=[4,5,6,0,0,0], m=3, nums2=[1,2,3], n=3",
+            "expectedOutput": "[1, 2, 3, 4, 5, 6]",
+            "actualOutput": "[4, 5, 6, 0, 0, 0]",
+            "isHidden": true,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "msa-h2",
+            "passed": false,
+            "input": "nums1=[0,0,0,0], m=0, nums2=[1,2,3,4], n=4",
+            "expectedOutput": "[1, 2, 3, 4]",
+            "actualOutput": "[0, 0, 0, 0]",
+            "isHidden": true,
+            "executionTimeMs": 1
+          }
+        ],
+        "passedCount": 1,
+        "totalCount": 5,
+        "earnedMarks": 3
+      },
+      "binary-search": {
+        "problemId": "binary-search",
+        "language": "java",
+        "compiled": true,
+        "compilationError": "",
+        "testResults": [
+          {
+            "testCaseId": "bs-v1",
+            "passed": false,
+            "input": "arr=[1,3,5,7,9,11], target=7",
+            "expectedOutput": "3",
+            "actualOutput": "-1",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "bs-v2",
+            "passed": true,
+            "input": "arr=[2,4,6,8], target=5",
+            "expectedOutput": "-1",
+            "actualOutput": "-1",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "bs-v3",
+            "passed": false,
+            "input": "arr=[10], target=10",
+            "expectedOutput": "0",
+            "actualOutput": "-1",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "bs-h1",
+            "passed": true,
+            "input": "arr=[], target=1",
+            "expectedOutput": "-1",
+            "actualOutput": "-1",
+            "isHidden": true,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "bs-h2",
+            "passed": false,
+            "input": "arr=[1,2,3,4,5], target=1",
+            "expectedOutput": "0",
+            "actualOutput": "-1",
+            "isHidden": true,
+            "executionTimeMs": 0
+          }
+        ],
+        "passedCount": 2,
+        "totalCount": 5,
+        "earnedMarks": 6
+      },
+      "matrix-multiplication": {
+        "problemId": "matrix-multiplication",
+        "language": "java",
+        "compiled": true,
+        "compilationError": "",
+        "testResults": [
+          {
+            "testCaseId": "mm-v1",
+            "passed": false,
+            "input": "A=[[1,2],[3,4]], B=[[5,6],[7,8]]",
+            "expectedOutput": "[[19, 22], [43, 50]]",
+            "actualOutput": "",
+            "error": "Runtime Error: Unexpected identifier 'int'",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "mm-v2",
+            "passed": false,
+            "input": "A=[[1,0],[0,1]], B=[[2,3],[4,5]]",
+            "expectedOutput": "[[2, 3], [4, 5]]",
+            "actualOutput": "",
+            "error": "Runtime Error: Unexpected identifier 'int'",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "mm-v3",
+            "passed": false,
+            "input": "A=[[1,2,3]], B=[[1],[1],[1]]",
+            "expectedOutput": "[[6]]",
+            "actualOutput": "",
+            "error": "Runtime Error: Unexpected identifier 'int'",
+            "isHidden": false,
+            "executionTimeMs": 2
+          },
+          {
+            "testCaseId": "mm-h1",
+            "passed": false,
+            "input": "A=[[2]], B=[[3]]",
+            "expectedOutput": "[[6]]",
+            "actualOutput": "",
+            "error": "Runtime Error: Unexpected identifier 'int'",
+            "isHidden": true,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "mm-h2",
+            "passed": false,
+            "input": "A=[[1,1],[1,1]], B=[[1,1],[1,1]]",
+            "expectedOutput": "[[2, 2], [2, 2]]",
+            "actualOutput": "",
+            "error": "Runtime Error: Unexpected identifier 'int'",
+            "isHidden": true,
+            "executionTimeMs": 1
+          }
+        ],
+        "passedCount": 0,
+        "totalCount": 5,
+        "earnedMarks": 0
+      }
+    }
+  },
+  {
+    "id": "37ap261aw",
+    "sessionId": "test_sess_11",
+    "rollNo": "2023-CC-21",
+    "name": "Test Candidate 11",
+    "mergeSortMarks": 3,
+    "binarySearchMarks": 6,
+    "matrixMultMarks": 0,
+    "totalScore": 9,
+    "timeTaken": "05:00",
+    "violations": 0,
+    "submittedAt": "2026-08-03T16:27:59.542Z",
+    "code": {
+      "merge-sorted-array": "public class Solution { public static void merge(int[] nums1, int m, int[] nums2, int n) {} }",
+      "binary-search": "public class Solution { public static int binarySearch(int[] arr, int target) { return -1; } }",
+      "matrix-multiplication": "public class Solution { public int[][] multiply(int[][] A, int[][] B) { return new int[][]{{19,22},{43,50}}; } }"
+    },
+    "testBreakdown": {
+      "merge-sorted-array": {
+        "problemId": "merge-sorted-array",
+        "language": "java",
+        "compiled": true,
+        "compilationError": "",
+        "testResults": [
+          {
+            "testCaseId": "msa-v1",
+            "passed": false,
+            "input": "nums1=[1,2,3,0,0,0], m=3, nums2=[2,5,6], n=3",
+            "expectedOutput": "[1, 2, 2, 3, 5, 6]",
+            "actualOutput": "[1, 2, 3, 0, 0, 0]",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "msa-v2",
+            "passed": true,
+            "input": "nums1=[1], m=1, nums2=[], n=0",
+            "expectedOutput": "[1]",
+            "actualOutput": "[1]",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "msa-v3",
+            "passed": false,
+            "input": "nums1=[0], m=0, nums2=[1], n=1",
+            "expectedOutput": "[1]",
+            "actualOutput": "[0]",
+            "isHidden": false,
+            "executionTimeMs": 2
+          },
+          {
+            "testCaseId": "msa-h1",
+            "passed": false,
+            "input": "nums1=[4,5,6,0,0,0], m=3, nums2=[1,2,3], n=3",
+            "expectedOutput": "[1, 2, 3, 4, 5, 6]",
+            "actualOutput": "[4, 5, 6, 0, 0, 0]",
+            "isHidden": true,
+            "executionTimeMs": 0
+          },
+          {
+            "testCaseId": "msa-h2",
+            "passed": false,
+            "input": "nums1=[0,0,0,0], m=0, nums2=[1,2,3,4], n=4",
+            "expectedOutput": "[1, 2, 3, 4]",
+            "actualOutput": "[0, 0, 0, 0]",
+            "isHidden": true,
+            "executionTimeMs": 1
+          }
+        ],
+        "passedCount": 1,
+        "totalCount": 5,
+        "earnedMarks": 3
+      },
+      "binary-search": {
+        "problemId": "binary-search",
+        "language": "java",
+        "compiled": true,
+        "compilationError": "",
+        "testResults": [
+          {
+            "testCaseId": "bs-v1",
+            "passed": false,
+            "input": "arr=[1,3,5,7,9,11], target=7",
+            "expectedOutput": "3",
+            "actualOutput": "-1",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "bs-v2",
+            "passed": true,
+            "input": "arr=[2,4,6,8], target=5",
+            "expectedOutput": "-1",
+            "actualOutput": "-1",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "bs-v3",
+            "passed": false,
+            "input": "arr=[10], target=10",
+            "expectedOutput": "0",
+            "actualOutput": "-1",
+            "isHidden": false,
+            "executionTimeMs": 0
+          },
+          {
+            "testCaseId": "bs-h1",
+            "passed": true,
+            "input": "arr=[], target=1",
+            "expectedOutput": "-1",
+            "actualOutput": "-1",
+            "isHidden": true,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "bs-h2",
+            "passed": false,
+            "input": "arr=[1,2,3,4,5], target=1",
+            "expectedOutput": "0",
+            "actualOutput": "-1",
+            "isHidden": true,
+            "executionTimeMs": 1
+          }
+        ],
+        "passedCount": 2,
+        "totalCount": 5,
+        "earnedMarks": 6
+      },
+      "matrix-multiplication": {
+        "problemId": "matrix-multiplication",
+        "language": "java",
+        "compiled": true,
+        "compilationError": "",
+        "testResults": [
+          {
+            "testCaseId": "mm-v1",
+            "passed": false,
+            "input": "A=[[1,2],[3,4]], B=[[5,6],[7,8]]",
+            "expectedOutput": "[[19, 22], [43, 50]]",
+            "actualOutput": "",
+            "error": "Runtime Error: Unexpected identifier 'int'",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "mm-v2",
+            "passed": false,
+            "input": "A=[[1,0],[0,1]], B=[[2,3],[4,5]]",
+            "expectedOutput": "[[2, 3], [4, 5]]",
+            "actualOutput": "",
+            "error": "Runtime Error: Unexpected identifier 'int'",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "mm-v3",
+            "passed": false,
+            "input": "A=[[1,2,3]], B=[[1],[1],[1]]",
+            "expectedOutput": "[[6]]",
+            "actualOutput": "",
+            "error": "Runtime Error: Unexpected identifier 'int'",
+            "isHidden": false,
+            "executionTimeMs": 0
+          },
+          {
+            "testCaseId": "mm-h1",
+            "passed": false,
+            "input": "A=[[2]], B=[[3]]",
+            "expectedOutput": "[[6]]",
+            "actualOutput": "",
+            "error": "Runtime Error: Unexpected identifier 'int'",
+            "isHidden": true,
+            "executionTimeMs": 0
+          },
+          {
+            "testCaseId": "mm-h2",
+            "passed": false,
+            "input": "A=[[1,1],[1,1]], B=[[1,1],[1,1]]",
+            "expectedOutput": "[[2, 2], [2, 2]]",
+            "actualOutput": "",
+            "error": "Runtime Error: Unexpected identifier 'int'",
+            "isHidden": true,
+            "executionTimeMs": 1
+          }
+        ],
+        "passedCount": 0,
+        "totalCount": 5,
+        "earnedMarks": 0
+      }
+    }
+  },
+  {
+    "id": "6z25bl4cz",
+    "sessionId": "test_sess_12",
+    "rollNo": "2023-CC-22",
+    "name": "Test Candidate 12",
+    "mergeSortMarks": 3,
+    "binarySearchMarks": 6,
+    "matrixMultMarks": 4,
+    "totalScore": 13,
+    "timeTaken": "05:00",
+    "violations": 0,
+    "submittedAt": "2026-08-03T16:28:12.328Z",
+    "code": {
+      "merge-sorted-array": "public class Solution { public static void merge(int[] nums1, int m, int[] nums2, int n) {} }",
+      "binary-search": "public class Solution { public static int binarySearch(int[] arr, int target) { return -1; } }",
+      "matrix-multiplication": "public class Solution { public int[][] multiply(int[][] A, int[][] B) { return new int[][]{{19,22},{43,50}}; } }"
+    },
+    "testBreakdown": {
+      "merge-sorted-array": {
+        "problemId": "merge-sorted-array",
+        "language": "java",
+        "compiled": true,
+        "compilationError": "",
+        "testResults": [
+          {
+            "testCaseId": "msa-v1",
+            "passed": false,
+            "input": "nums1=[1,2,3,0,0,0], m=3, nums2=[2,5,6], n=3",
+            "expectedOutput": "[1, 2, 2, 3, 5, 6]",
+            "actualOutput": "[1, 2, 3, 0, 0, 0]",
+            "isHidden": false,
+            "executionTimeMs": 11
+          },
+          {
+            "testCaseId": "msa-v2",
+            "passed": true,
+            "input": "nums1=[1], m=1, nums2=[], n=0",
+            "expectedOutput": "[1]",
+            "actualOutput": "[1]",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "msa-v3",
+            "passed": false,
+            "input": "nums1=[0], m=0, nums2=[1], n=1",
+            "expectedOutput": "[1]",
+            "actualOutput": "[0]",
+            "isHidden": false,
+            "executionTimeMs": 2
+          },
+          {
+            "testCaseId": "msa-h1",
+            "passed": false,
+            "input": "nums1=[4,5,6,0,0,0], m=3, nums2=[1,2,3], n=3",
+            "expectedOutput": "[1, 2, 3, 4, 5, 6]",
+            "actualOutput": "[4, 5, 6, 0, 0, 0]",
+            "isHidden": true,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "msa-h2",
+            "passed": false,
+            "input": "nums1=[0,0,0,0], m=0, nums2=[1,2,3,4], n=4",
+            "expectedOutput": "[1, 2, 3, 4]",
+            "actualOutput": "[0, 0, 0, 0]",
+            "isHidden": true,
+            "executionTimeMs": 1
+          }
+        ],
+        "passedCount": 1,
+        "totalCount": 5,
+        "earnedMarks": 3
+      },
+      "binary-search": {
+        "problemId": "binary-search",
+        "language": "java",
+        "compiled": true,
+        "compilationError": "",
+        "testResults": [
+          {
+            "testCaseId": "bs-v1",
+            "passed": false,
+            "input": "arr=[1,3,5,7,9,11], target=7",
+            "expectedOutput": "3",
+            "actualOutput": "-1",
+            "isHidden": false,
+            "executionTimeMs": 2
+          },
+          {
+            "testCaseId": "bs-v2",
+            "passed": true,
+            "input": "arr=[2,4,6,8], target=5",
+            "expectedOutput": "-1",
+            "actualOutput": "-1",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "bs-v3",
+            "passed": false,
+            "input": "arr=[10], target=10",
+            "expectedOutput": "0",
+            "actualOutput": "-1",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "bs-h1",
+            "passed": true,
+            "input": "arr=[], target=1",
+            "expectedOutput": "-1",
+            "actualOutput": "-1",
+            "isHidden": true,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "bs-h2",
+            "passed": false,
+            "input": "arr=[1,2,3,4,5], target=1",
+            "expectedOutput": "0",
+            "actualOutput": "-1",
+            "isHidden": true,
+            "executionTimeMs": 1
+          }
+        ],
+        "passedCount": 2,
+        "totalCount": 5,
+        "earnedMarks": 6
+      },
+      "matrix-multiplication": {
+        "problemId": "matrix-multiplication",
+        "language": "java",
+        "compiled": true,
+        "compilationError": "",
+        "testResults": [
+          {
+            "testCaseId": "mm-v1",
+            "passed": true,
+            "input": "A=[[1,2],[3,4]], B=[[5,6],[7,8]]",
+            "expectedOutput": "[[19, 22], [43, 50]]",
+            "actualOutput": "[[19, 22], [43, 50]]",
+            "isHidden": false,
+            "executionTimeMs": 2
+          },
+          {
+            "testCaseId": "mm-v2",
+            "passed": false,
+            "input": "A=[[1,0],[0,1]], B=[[2,3],[4,5]]",
+            "expectedOutput": "[[2, 3], [4, 5]]",
+            "actualOutput": "[[19, 22], [43, 50]]",
+            "isHidden": false,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "mm-v3",
+            "passed": false,
+            "input": "A=[[1,2,3]], B=[[1],[1],[1]]",
+            "expectedOutput": "[[6]]",
+            "actualOutput": "[[19, 22], [43, 50]]",
+            "isHidden": false,
+            "executionTimeMs": 2
+          },
+          {
+            "testCaseId": "mm-h1",
+            "passed": false,
+            "input": "A=[[2]], B=[[3]]",
+            "expectedOutput": "[[6]]",
+            "actualOutput": "[[19, 22], [43, 50]]",
+            "isHidden": true,
+            "executionTimeMs": 1
+          },
+          {
+            "testCaseId": "mm-h2",
+            "passed": false,
+            "input": "A=[[1,1],[1,1]], B=[[1,1],[1,1]]",
+            "expectedOutput": "[[2, 2], [2, 2]]",
+            "actualOutput": "[[19, 22], [43, 50]]",
+            "isHidden": true,
+            "executionTimeMs": 1
+          }
+        ],
+        "passedCount": 1,
+        "totalCount": 5,
+        "earnedMarks": 4
+      }
+    }
+  }
+]

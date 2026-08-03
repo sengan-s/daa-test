@@ -149,7 +149,7 @@ export async function saveSubmissionToSupabase(record: any): Promise<boolean> {
       matrix_mult_marks: record.matrixMultMarks || 0,
       violations: record.violations || 0,
       time_taken: record.timeTaken || '',
-      code_submission: record.codes || {},
+      code_submission: record.code || record.codes || {},
       submitted_at: record.submittedAt || new Date().toISOString(),
     };
 
@@ -191,7 +191,8 @@ export async function fetchSubmissionsFromSupabase(): Promise<any[] | null> {
       matrixMultMarks: row.matrix_mult_marks,
       violations: row.violations,
       timeTaken: row.time_taken,
-      codes: row.code_submission,
+      code: row.code_submission || {},
+      codes: row.code_submission || {},
       submittedAt: row.submitted_at,
       syncedFromSupabase: true,
     }));
